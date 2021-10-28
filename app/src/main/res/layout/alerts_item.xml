@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:screenOrientation="portrait"
+    android:layout_marginBottom="5dp"
+    android:background="#2C2323">
+
+
+    <TextView
+        android:id="@+id/textFreq"
+        android:layout_width="85dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="100.345 GHz"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressStrength"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="160dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textFreq"
+        app:layout_constraintStart_toEndOf="@+id/textFreq"
+        app:layout_constraintTop_toTopOf="@+id/textFreq" />
+
+    <TextView
+        android:id="@+id/textType"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Radar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFreq" />
+
+    <TextView
+        android:id="@+id/textBand"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="X"
+        app:layout_constraintStart_toEndOf="@+id/textType"
+        app:layout_constraintTop_toTopOf="@+id/textType" />
+
+    <TextView
+        android:id="@+id/textThreat"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Threat_Name"
+        app:layout_constraintStart_toEndOf="@+id/textBand"
+        app:layout_constraintTop_toTopOf="@+id/textBand" />
+
+    <TextView
+        android:id="@+id/textDir"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:text="Front"
+        app:layout_constraintStart_toEndOf="@+id/progressStrength"
+        app:layout_constraintTop_toTopOf="@+id/progressStrength" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#E82727"
+        app:barrierDirection="top"
+        tools:layout_editor_absoluteX="406dp"
+        tools:layout_editor_absoluteY="67dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

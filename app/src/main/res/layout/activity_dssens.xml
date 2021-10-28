@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:screenOrientation="portrait"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnKaPlus"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:onClick="onClick"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="@+id/prog_sense_ka"
+        app:layout_constraintTop_toBottomOf="@+id/prog_sense_ka" />
+
+    <Button
+        android:id="@+id/btnKaNeg"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onClick"
+        android:text="-"
+        app:layout_constraintStart_toStartOf="@+id/btnXNeg"
+        app:layout_constraintTop_toBottomOf="@+id/prog_sense_ka" />
+
+    <Button
+        android:id="@+id/btnBrightNeg7"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onClick"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="@+id/prog_sense_K"
+        app:layout_constraintTop_toBottomOf="@+id/prog_sense_K" />
+
+    <Button
+        android:id="@+id/btnKNeg"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onClick"
+        android:text="-"
+        app:layout_constraintStart_toStartOf="@+id/btnXNeg"
+        app:layout_constraintTop_toBottomOf="@+id/prog_sense_K" />
+
+    <Button
+        android:id="@+id/btnXPlus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="onClick"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="@+id/prog_sens_X"
+        app:layout_constraintTop_toTopOf="@+id/btnXNeg" />
+
+    <Button
+        android:id="@+id/btnXNeg"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onClick"
+        android:text="-"
+        app:layout_constraintStart_toStartOf="@+id/prog_sens_X"
+        app:layout_constraintTop_toBottomOf="@+id/prog_sens_X" />
+
+    <Switch
+        android:id="@+id/sw_ds1laser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Laser"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/sw_ds1x"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="X"
+        app:layout_constraintStart_toStartOf="@+id/sw_ds1laser"
+        app:layout_constraintTop_toBottomOf="@+id/sw_ds1laser" />
+
+    <Switch
+        android:id="@+id/sw_ds1K"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:text="K"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sw_ds1x" />
+
+    <Switch
+        android:id="@+id/sw_ds1Ka"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Ka"
+        app:layout_constraintEnd_toEndOf="@+id/sw_pop_K"
+        app:layout_constraintTop_toBottomOf="@+id/sw_pop_K" />
+
+    <SeekBar
+        android:id="@+id/prog_sens_X"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:max="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sw_ds1x"
+        app:layout_constraintTop_toTopOf="@+id/sw_ds1x" />
+
+    <SeekBar
+        android:id="@+id/prog_sense_K"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:max="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sw_ds1K"
+        app:layout_constraintTop_toTopOf="@+id/sw_ds1K" />
+
+    <SeekBar
+        android:id="@+id/prog_sense_ka"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:max="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sw_ds1Ka"
+        app:layout_constraintTop_toTopOf="@+id/sw_ds1Ka" />
+
+    <TextView
+        android:id="@+id/text_sense_X"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/prog_sens_X"
+        app:layout_constraintStart_toStartOf="@+id/prog_sens_X"
+        app:layout_constraintTop_toBottomOf="@+id/prog_sens_X" />
+
+    <TextView
+        android:id="@+id/btnKPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/prog_sense_K"
+        app:layout_constraintStart_toStartOf="@+id/prog_sense_K"
+        app:layout_constraintTop_toBottomOf="@+id/prog_sense_K" />
+
+    <TextView
+        android:id="@+id/text_sense_Ka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/prog_sense_ka"
+        app:layout_constraintStart_toStartOf="@+id/prog_sense_ka"
+        app:layout_constraintTop_toBottomOf="@+id/prog_sense_ka" />
+
+    <Switch
+        android:id="@+id/sw_ds1mrcd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="MRCD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sw_ds1laser" />
+
+    <Switch
+        android:id="@+id/sw_pop_K"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Pop K"
+        app:layout_constraintEnd_toEndOf="@+id/sw_ds1K"
+        app:layout_constraintTop_toBottomOf="@+id/sw_ds1K" />
+
+    <Switch
+        android:id="@+id/sw_pop_Ka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Pop Ka"
+        app:layout_constraintEnd_toEndOf="@+id/sw_ds1Ka"
+        app:layout_constraintTop_toBottomOf="@+id/sw_ds1Ka" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:screenOrientation="portrait"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnBrightPos2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:onClick="onPlus"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="@+id/seek_GMT"
+        app:layout_constraintTop_toTopOf="@+id/btnBrightNeg2" />
+
+    <Button
+        android:id="@+id/btnBrightNeg2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onMinus"
+        android:text="-"
+        app:layout_constraintStart_toStartOf="@+id/seek_GMT"
+        app:layout_constraintTop_toBottomOf="@+id/seek_GMT" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="GMT"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seek_GMT"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:max="24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/txtGMT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/seek_GMT"
+        app:layout_constraintStart_toStartOf="@+id/seek_GMT"
+        app:layout_constraintTop_toBottomOf="@+id/seek_GMT" />
+
+    <Switch
+        android:id="@+id/sw_DST"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:onClick="onDST"
+        android:text="Daylight Savings"
+        app:layout_constraintTop_toBottomOf="@+id/txtGMT"
+        tools:layout_editor_absoluteX="22dp" />
+
+    <Switch
+        android:id="@+id/sw_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:onClick="on24"
+        android:text="24 hour time"
+        app:layout_constraintEnd_toEndOf="@+id/sw_DST"
+        app:layout_constraintTop_toBottomOf="@+id/sw_DST" />
+</androidx.constraintlayout.widget.ConstraintLayout>

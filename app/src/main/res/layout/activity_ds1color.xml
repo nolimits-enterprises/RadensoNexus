@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="portrait"
+    tools:context=".DS1Color" >
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/radio_ds_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Red"
+            android:textColor="@android:color/holo_red_dark"
+            tools:text="Red" />
+
+        <RadioButton
+            android:id="@+id/radio_ds_blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Blue"
+            android:textColor="@android:color/holo_blue_light"
+            tools:text="Blue" />
+
+        <RadioButton
+            android:id="@+id/radio_ds_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="White"
+            android:textColor="@color/white"
+            tools:text="White" />
+
+        <RadioButton
+            android:id="@+id/radio_ds_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gray"
+            android:textColor="@android:color/darker_gray"
+            tools:text="Gray" />
+
+        <RadioButton
+            android:id="@+id/radio_ds_pink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pink"
+            android:textColor="#E4185E"
+            tools:text="Pink" />
+
+        <RadioButton
+            android:id="@+id/radio_ds_purple"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Purple"
+            android:textColor="@android:color/holo_purple"
+            tools:text="Purple" />
+
+        <RadioButton
+            android:id="@+id/radio_ds_green"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Green"
+            android:textColor="@android:color/holo_green_light"
+            tools:text="Green" />
+
+        <RadioButton
+            android:id="@+id/radio_ds_amber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Amber"
+            android:textColor="#E1AC0F"
+            tools:text="Amber" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

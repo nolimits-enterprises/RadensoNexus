@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:screenOrientation="portrait"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Switch
+        android:id="@+id/sw_GPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="onSwitchClicked"
+        android:text="Enable GPS"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/swi_gps_sig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:onClick="onSwitchClicked"
+        android:text="Signal Announce"
+        app:layout_constraintStart_toStartOf="@+id/sw_GPS"
+        app:layout_constraintTop_toBottomOf="@+id/sw_GPS" />
+
+    <Switch
+        android:id="@+id/sw_gps_lockout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:onClick="onSwitchClicked"
+        android:text="Auto Lockout"
+        app:layout_constraintEnd_toEndOf="@+id/swi_gps_sig"
+        app:layout_constraintTop_toBottomOf="@+id/swi_gps_sig" />
+
+    <Switch
+        android:id="@+id/sw_gps_rlc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:onClick="onSwitchClicked"
+        android:text="Red Light Camera"
+        app:layout_constraintEnd_toEndOf="@+id/sw_gps_lockout"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+
+    <Switch
+        android:id="@+id/sw_gps_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="Speed Camera"
+        app:layout_constraintEnd_toEndOf="@+id/sw_gps_rlc"
+        app:layout_constraintTop_toBottomOf="@+id/sw_gps_rlc" />
+
+    <Switch
+        android:id="@+id/sw_gps_rlc_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="RLC &amp; Speed Cam"
+        app:layout_constraintEnd_toEndOf="@+id/sw_gps_speed"
+        app:layout_constraintTop_toBottomOf="@+id/sw_gps_speed" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        app:layout_constraintStart_toEndOf="@+id/sw_gps_lockout"
+        app:layout_constraintTop_toTopOf="@+id/sw_gps_lockout">
+
+        <RadioButton
+            android:id="@+id/radio_gps_auto_nl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="No Limit" />
+
+        <RadioButton
+            android:id="@+id/radio_gps_auto_50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="50 mile" />
+
+        <RadioButton
+            android:id="@+id/radio_gps_auto_100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="100 mile" />
+
+        <RadioButton
+            android:id="@+id/radio_gps_auto_150"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="150 mile" />
+
+        <RadioButton
+            android:id="@+id/radio_gps_auto_200"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="200 mile" />
+    </RadioGroup>
+
+    <SeekBar
+        android:id="@+id/seek_gps_rlc"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:max="200"
+        app:layout_constraintStart_toEndOf="@+id/sw_gps_speed"
+        app:layout_constraintTop_toTopOf="@+id/sw_gps_speed" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Red Light Cam Auto Mute"
+        app:layout_constraintBottom_toTopOf="@+id/seek_gps_rlc"
+        app:layout_constraintEnd_toEndOf="@+id/seek_gps_rlc"
+        app:layout_constraintStart_toStartOf="@+id/seek_gps_rlc" />
+
+    <TextView
+        android:id="@+id/txt_gps_rlc_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/seek_gps_rlc"
+        app:layout_constraintStart_toStartOf="@+id/seek_gps_rlc"
+        app:layout_constraintTop_toBottomOf="@+id/seek_gps_rlc" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup2"
+        app:layout_constraintTop_toBottomOf="@+id/sw_gps_rlc_speed">
+
+        <RadioButton
+            android:id="@+id/radio_gps_dist_auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Auto" />
+
+        <RadioButton
+            android:id="@+id/radio_gps_dist_short"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Short" />
+
+        <RadioButton
+            android:id="@+id/radio_gps_dist_med"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Medium" />
+
+        <RadioButton
+            android:id="@+id/radio_gps_dist_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Long" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alert Distance"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup4"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroup4"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup4" />
+</androidx.constraintlayout.widget.ConstraintLayout>

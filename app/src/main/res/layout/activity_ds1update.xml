@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true"
+    android:screenOrientation="portrait"
+    tools:context=".DS1UpdateTest">
+
+    <TextView
+        android:id="@+id/textCurrentVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Current Version: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textNewestVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Update Version: "
+        app:layout_constraintStart_toStartOf="@+id/textCurrentVersion"
+        app:layout_constraintTop_toBottomOf="@+id/textCurrentVersion" />
+
+    <ProgressBar
+        android:id="@+id/progressUpdate"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:max="100"
+        android:progress="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNewestVersion" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:onClick="onUpdatePress"
+        android:text="Start Update"
+        app:layout_constraintEnd_toEndOf="@+id/txtUpdateProgress"
+        app:layout_constraintStart_toStartOf="@+id/txtUpdateProgress"
+        app:layout_constraintTop_toBottomOf="@+id/txtUpdateProgress" />
+
+    <TextView
+        android:id="@+id/txtUpdateProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Update Progress"
+        app:layout_constraintEnd_toEndOf="@+id/progressUpdate"
+        app:layout_constraintStart_toStartOf="@+id/progressUpdate"
+        app:layout_constraintTop_toBottomOf="@+id/progressUpdate" />
+
+    <CheckBox
+        android:id="@+id/checkRecover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:onClick="onRecoverPress"
+        android:text="Recovery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTimeRemaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="txtTimeRemaining"
+        app:layout_constraintBottom_toTopOf="@+id/progressUpdate"
+        app:layout_constraintEnd_toEndOf="@+id/progressUpdate"
+        app:layout_constraintStart_toStartOf="@+id/progressUpdate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

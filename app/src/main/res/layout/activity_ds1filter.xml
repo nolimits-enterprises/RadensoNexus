@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:screenOrientation="portrait"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Switch
+        android:id="@+id/sw_seg1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="1"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <Switch
+        android:id="@+id/sw_seg2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="2"
+        app:layout_constraintStart_toStartOf="@+id/sw_seg1"
+        app:layout_constraintTop_toBottomOf="@+id/sw_seg1" />
+
+    <Switch
+        android:id="@+id/sw_seg3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="3"
+        app:layout_constraintStart_toStartOf="@+id/sw_seg2"
+        app:layout_constraintTop_toBottomOf="@+id/sw_seg2" />
+
+    <Switch
+        android:id="@+id/sw_seg4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="4"
+        app:layout_constraintEnd_toEndOf="@+id/sw_seg3"
+        app:layout_constraintTop_toBottomOf="@+id/sw_seg3" />
+
+    <Switch
+        android:id="@+id/sw_seg5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="5"
+        app:layout_constraintEnd_toEndOf="@+id/sw_seg4"
+        app:layout_constraintTop_toBottomOf="@+id/sw_seg4" />
+
+    <Switch
+        android:id="@+id/sw_seg6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="6"
+        app:layout_constraintEnd_toEndOf="@+id/sw_seg5"
+        app:layout_constraintTop_toBottomOf="@+id/sw_seg5" />
+
+    <Switch
+        android:id="@+id/sw_seg7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="7"
+        app:layout_constraintEnd_toEndOf="@+id/sw_seg6"
+        app:layout_constraintTop_toBottomOf="@+id/sw_seg6" />
+
+    <Switch
+        android:id="@+id/sw_seg8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="8"
+        app:layout_constraintEnd_toEndOf="@+id/sw_seg7"
+        app:layout_constraintTop_toBottomOf="@+id/sw_seg7" />
+
+    <Switch
+        android:id="@+id/sw_seg9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="9"
+        app:layout_constraintEnd_toEndOf="@+id/sw_seg8"
+        app:layout_constraintTop_toBottomOf="@+id/sw_seg8" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Ka Segment"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sw_Ka_Filter">
+
+        <RadioButton
+            android:id="@+id/radio_ka_wide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Wide" />
+
+        <RadioButton
+            android:id="@+id/radio_ka_narrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Narrow" />
+
+        <RadioButton
+            android:id="@+id/radio_ka_seg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Segmentation" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Ka Band"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="K Band"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/sw_K_filter">
+
+        <RadioButton
+            android:id="@+id/radio_K_wide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Wide" />
+
+        <RadioButton
+            android:id="@+id/radio_K_narrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Narrow" />
+
+        <RadioButton
+            android:id="@+id/radio_K_NZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="NZ Narrow" />
+    </RadioGroup>
+
+    <Switch
+        android:id="@+id/sw_K_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="onSwitchClicked"
+        android:text="Filter"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <Switch
+        android:id="@+id/sw_Ka_Filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="onSwitchClicked"
+        android:text="Filter"
+        app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Switch
+        android:id="@+id/sw_TSR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="TSR"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

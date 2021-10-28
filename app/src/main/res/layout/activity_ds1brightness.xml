@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:screenOrientation="portrait"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnBrightNeg"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="onBMinus"
+        android:text="-"
+        app:layout_constraintStart_toStartOf="@+id/seek_dsBright"
+        app:layout_constraintTop_toTopOf="@+id/btnBrightPos" />
+
+    <SeekBar
+        android:id="@+id/seek_dsBright"
+        android:layout_width="0dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:max="2"
+        android:progress="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sw_ds1brightness"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/sw_ds1brightness"
+        android:layout_width="112dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Auto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnBrightPos"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+
+        android:onClick="onBPlus"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="@+id/seek_dsBright"
+        app:layout_constraintTop_toBottomOf="@+id/seek_dsBright" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="portrait"
+    tools:context=".TheiaSettingColor">
+
+<GridLayout
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <Button
+        android:onClick="onColorClick"
+        android:id="@+id/buttonWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:onClick="onColorClick"
+        android:id="@+id/buttonRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="#FF0000" />
+
+    <Button
+        android:onClick="onColorClick"
+        android:id="@+id/buttonYellow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="#FFE400" />
+
+    <Button
+        android:onClick="onColorClick"
+        android:id="@+id/buttonGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_margin="2dp"
+        android:foreground="@android:color/holo_green_light"
+        android:text="Button" />
+
+    <Button
+        android:onClick="onColorClick"
+        android:id="@+id/buttonTeal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:foreground="@color/teal_200"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/buttonPurple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="#FFFFFF"
+        android:foreground="@color/purple_200"
+        android:onClick="onColorClick"
+        android:text="Button" />
+</GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
