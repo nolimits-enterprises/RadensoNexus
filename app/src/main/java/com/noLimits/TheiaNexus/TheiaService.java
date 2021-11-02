@@ -80,24 +80,6 @@ public class TheiaService extends Service {
 
     private final Queue<QEntry> rxtxQ = new LinkedList<QEntry>();
 
-    public class AlertEntry
-    {
-        int dir = 0;
-        int band = 0;
-        int alert_class = 0;
-        String threat_name = "";
-
-        int distance = 0;
-        float intensity = 0.0f;
-        float certainty = 0.0f;
-        float frequency = 0.0f;
-        int initial_time = 0;
-
-        public AlertEntry()
-        {
-
-        }
-    }
 
     private List<AlertEntry>  alertList = new ArrayList<AlertEntry>();
     public List<AlertEntry> getAlertList()

@@ -28,13 +28,16 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nolimits.ds1library.DS1Service;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder>
 {
     private static final String TAG = "ALERT_ADAPTER";
-    List<TheiaService.AlertEntry> alertList = new ArrayList<TheiaService.AlertEntry>();
+    List<AlertEntry> alertList = new ArrayList<AlertEntry>();
 
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
@@ -79,6 +82,21 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
                 break;
             case 2:
                 band = "Ka";
+                break;
+            case 3:
+                band = "Pop";
+                break;
+            case 4:
+                band = "MRCD";
+                break;
+            case 5:
+                band = "MRCT";
+                break;
+            case 6:
+                band = "GT3";
+                break;
+            case 7:
+                band = "GT4";
                 break;
         }
 
@@ -128,7 +146,7 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
         return alertList.size();
     }
 
-    public void setAlertList(List<TheiaService.AlertEntry> entries)
+    public void setAlertList(List<AlertEntry> entries)
     {
         alertList.clear();
         for (int i = 0; i < entries.size(); i++)
@@ -136,5 +154,85 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
             alertList.add(entries.get(i));
         }
         //alertList = entries;
+    }
+
+    AlertEntry toEntry(DS1Service.RD_Alert a)
+    {
+        AlertEntry e = new AlertEntry();
+
+        switch(a.alert_dir)
+        {
+            case ALERT_DIR_FRONT:
+                e.dir = 0;
+                break;
+            case ALERT_DIR_SIDE:
+                e.dir = 1;
+                break;
+            default:
+                e.dir = 2;
+                break;
+        }
+
+        e.intensity = (a.rssi + 2) * 10;
+
+        if (a.type.compareTo("X") == 0)
+        {
+            e.alert_class = 0;
+            e.band = 0;
+        }
+        else if (0 == a.type.compareTo("K"))
+        {
+            e.alert_class = 0;
+            e.band = 1;
+
+        }
+        else if (0 == a.type.compareTo("Ka"))
+        {
+            e.alert_class = 0;
+            e.band = 2;
+        }
+        else if (0 == a.type.compareTo("Laser"))
+        {
+            e.alert_class = 1;
+        }
+        else if (0 == a.type.compareTo("POP"))
+        {
+            e.alert_class = 0;
+            e.band = 3;
+        }
+        else if (0 == a.type.compareTo("MRCD"))
+        {
+            e.alert_class = 0;
+            e.band = 4;
+
+        }
+        else if (0 == a.type.compareTo("MRCT"))
+        {
+            e.alert_class = 0;
+            e.band = 5;
+        }
+        else if (0 == a.type.compareTo("GT3"))
+        {
+            e.alert_class = 0;
+            e.band = 6;
+        }
+        else if (0 == a.type.compareTo("GT4"))
+        {
+            e.alert_class = 0;
+            e.band = 7;
+        }
+
+        return e;
+    }
+
+    public void setAlertList( Vector<DS1Service.RD_Alert> alerts)
+    {
+
+        alertList.clear();
+        for (int i= 0 ; i < alerts.size(); i++)
+        {
+            if(alerts.get(i).detected)
+                alertList.add(toEntry(alerts.get(i)));
+        }
     }
 }

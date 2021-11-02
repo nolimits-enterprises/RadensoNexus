@@ -28,8 +28,11 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nolimits.ds1library.DS1Service;
+
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Vector;
 
 
 public class DS1StatusAlerts extends DS1ServiceActionACtivity {
@@ -67,27 +70,31 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
     {
         super.onResume();
 
-        mTimer = new Timer();
-
-        mTimer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //mAdapter.setAlertList(mTheiaService.getAlertList());
-                        mAdapter.notifyDataSetChanged();
-                        //mTheiaService.checkAlerts();
-                    }
-                });
-            }
-        } , 1500, 1500);
     }
 
     @Override
     public void onPause()
     {
         super.onPause();
-        mTimer.cancel();
+    }
+
+    @Override
+    void onGotResult()
+    {
+
+        // process alerts
+        if(mDS1Service != null)
+        {
+            Vector<DS1Service.RD_Alert> alerts = mDS1Service.getmAlerts();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mAdapter.setAlertList(alerts);
+                    mAdapter.notifyDataSetChanged();
+                }
+            });
+        }
+
     }
 
 }
