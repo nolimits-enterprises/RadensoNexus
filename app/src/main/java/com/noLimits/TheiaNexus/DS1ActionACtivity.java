@@ -65,6 +65,9 @@ public class DS1ActionACtivity extends DS1Menu {
          */
 
 
+        arrayMenu.add("    Alerts");                   // 2
+        intentMenu.add(new DS1Menu.activityConfiguration(DS1StatusAlerts.class));
+
         arrayMenu.add("    Volume");                   // 2
         intentMenu.add(new DS1Menu.activityConfiguration(DS1Volume.class));
 

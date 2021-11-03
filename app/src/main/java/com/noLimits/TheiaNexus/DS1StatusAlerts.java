@@ -89,8 +89,10 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    mAdapter.setAlertList(alerts);
-                    mAdapter.notifyDataSetChanged();
+                    if (alerts != null) {
+                        mAdapter.setAlertList(alerts);
+                        mAdapter.notifyDataSetChanged();
+                    }
                 }
             });
         }

@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:onClick="refreshClick"
         android:text="Refresh"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

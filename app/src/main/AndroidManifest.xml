@@ -239,6 +239,10 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity android:name=".DS1StatusAlerts"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity android:name=".TheiaMenuUnit"
             android:screenOrientation="portrait">
         </activity>
