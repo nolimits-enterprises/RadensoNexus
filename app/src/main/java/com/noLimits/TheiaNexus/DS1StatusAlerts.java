@@ -69,6 +69,8 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
     public void onResume()
     {
         super.onResume();
+        if (mDS1Service != null)
+            mDS1Service.enableAlertNotifications();
 
     }
 
