@@ -34,6 +34,7 @@ public class DS1Volume extends DS1ServiceActionACtivity {
     Button colorButton;
     SeekBar sb;
     Switch sw;
+    TextView txt;
 
     @Override
     public void onCreate (Bundle b) {
@@ -43,6 +44,7 @@ public class DS1Volume extends DS1ServiceActionACtivity {
 
         setContentView(R.layout.activity_ds1volume);
         sb = (SeekBar)findViewById(R.id.seek_dsVolume);
+        txt = (TextView)findViewById(R.id.txtVolume);
 
         sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -64,6 +66,7 @@ public class DS1Volume extends DS1ServiceActionACtivity {
                     if (mDS1Service != null)
                     {
                         mDS1Service.setVolume(progress);
+                        txt.setText(String.valueOf(progress));
                     }
                 }
             }
@@ -77,6 +80,7 @@ public class DS1Volume extends DS1ServiceActionACtivity {
         sb.setProgress(sb.getProgress()+1);
         int progress = sb.getProgress();
         mDS1Service.setVolume(progress);
+        txt.setText(String.valueOf(progress));
     }
 
     public void onMinus(View v)
@@ -84,6 +88,7 @@ public class DS1Volume extends DS1ServiceActionACtivity {
         sb.setProgress(sb.getProgress()-1);
         int progress = sb.getProgress();
         mDS1Service.setVolume(progress);
+        txt.setText(String.valueOf(progress));
     }
 
     @Override
@@ -96,6 +101,7 @@ public class DS1Volume extends DS1ServiceActionACtivity {
                     return;
 
                 sb.setProgress(mDS1Service.getmSetting().volume);
+                txt.setText(String.valueOf(mDS1Service.getmSetting().volume);
 
             }
         });

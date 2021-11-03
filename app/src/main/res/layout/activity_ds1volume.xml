@@ -38,4 +38,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtVolume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volume"
+        app:layout_constraintEnd_toEndOf="@+id/seek_dsVolume"
+        app:layout_constraintStart_toStartOf="@+id/seek_dsVolume"
+        app:layout_constraintTop_toTopOf="@+id/btnBrightNeg3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

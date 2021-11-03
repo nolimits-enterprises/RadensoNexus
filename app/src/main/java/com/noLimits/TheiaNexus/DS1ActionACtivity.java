@@ -91,7 +91,7 @@ public class DS1ActionACtivity extends DS1Menu {
         intentMenu.add(new DS1Menu.activityConfiguration(DS1MenuUnit.class));
 
 
-        arrayMenu.add("    Update System");                   // 2
+        arrayMenu.add("    Update DS1");                   // 2
         intentMenu.add(new DS1Menu.activityConfiguration(DS1UpdateTest.class));
         arrayMenu.add("");                          // 3
         intentMenu.add(new DS1Menu.activityConfiguration(null));
