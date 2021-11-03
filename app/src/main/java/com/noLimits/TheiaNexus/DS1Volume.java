@@ -101,7 +101,7 @@ public class DS1Volume extends DS1ServiceActionACtivity {
                     return;
 
                 sb.setProgress(mDS1Service.getmSetting().volume);
-                txt.setText(String.valueOf(mDS1Service.getmSetting().volume);
+                txt.setText(String.valueOf(mDS1Service.getmSetting().volume));
 
             }
         });
