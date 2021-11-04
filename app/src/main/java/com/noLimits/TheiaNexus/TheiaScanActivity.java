@@ -427,6 +427,7 @@ public class TheiaScanActivity extends AppCompatActivity {
                                 if(auto_address.compareTo(r.getDevice().getAddress()) == 0)
                                 {
                                     selected_device = DEVICE_TYPE.DS1_TYPE;
+                                    connectAddress = auto_address;
                                     mDS1Service.connectTo(auto_address);
                                 }
                             }
