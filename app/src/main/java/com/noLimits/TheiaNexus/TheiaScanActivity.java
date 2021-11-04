@@ -35,6 +35,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -226,6 +227,8 @@ public class TheiaScanActivity extends AppCompatActivity {
     }
 
 
+    String connectAddress;
+
     @Override
     protected void onResume()
     {
@@ -273,6 +276,7 @@ public class TheiaScanActivity extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog, int id) {
                                         try{
                                             mDeviceList.get(pos).createBond();
+                                            connectAddress = mDeviceList.get(pos).getAddress();
                                             mDS1Service.connectTo(mDeviceList.get(pos).getAddress());
                                         }
                                         catch (Exception e)
@@ -293,10 +297,12 @@ public class TheiaScanActivity extends AppCompatActivity {
                         }
                     }
                     else {
+                        connectAddress = mDeviceList.get(pos).getAddress();
                         mDS1Service.connectTo(mDeviceList.get(pos).getAddress());
                     }
                 }else {
                     selected_device = DEVICE_TYPE.THEIA_TYPE;
+                    connectAddress = mDeviceList.get(pos).getAddress();
                     mTheiaService.connectTo(mDeviceList.get(pos).getAddress());
                 }
                 intent.putExtra("DEV_ADDR", mDeviceList.get(pos).getAddress());
@@ -440,6 +446,14 @@ public class TheiaScanActivity extends AppCompatActivity {
                 mConnectedText.setText("Connected");
                 mConnectedText.setTextColor(Color.GREEN);
                 Intent intentStart = new Intent(TheiaScanActivity.this, DS1ActionACtivity.class);
+
+                // register autoreconnect
+                SharedPreferences p = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = p.edit();
+                editor.putBoolean(getString(R.string.key_autoconnect), true);
+                editor.putString(getString(R.string.key_autoconnect_address), connectAddress);
+                editor.apply();
+
                 startActivity(intentStart);
                 finish();
             }
@@ -448,12 +462,24 @@ public class TheiaScanActivity extends AppCompatActivity {
                 mConnectedText.setText("Connected");
                 mConnectedText.setTextColor(Color.GREEN);
                 if (selected_device == DEVICE_TYPE.THEIA_TYPE) {
+                    // register autoreconnect
+                    SharedPreferences p = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = p.edit();
+                    editor.putBoolean(getString(R.string.key_autoconnect), true);
+                    editor.putString(getString(R.string.key_autoconnect_address), connectAddress);
+                    editor.apply();
                     Intent intentStart = new Intent(TheiaScanActivity.this, TheiaActionActivity.class);
                     startActivity(intentStart);
                 }
                 else
                 {
                     // here start the ds1 activity
+                    // register autoreconnect
+                    SharedPreferences p = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = p.edit();
+                    editor.putBoolean(getString(R.string.key_autoconnect), true);
+                    editor.putString(getString(R.string.key_autoconnect_address), connectAddress);
+                    editor.apply();
                     Intent intentStart = new Intent(TheiaScanActivity.this, DS1ActionACtivity.class);
                     startActivity(intentStart);
                 }

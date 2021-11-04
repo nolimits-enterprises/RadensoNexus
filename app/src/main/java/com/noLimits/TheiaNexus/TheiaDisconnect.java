@@ -18,7 +18,9 @@
 
 package com.noLimits.TheiaNexus;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -35,6 +37,11 @@ public class TheiaDisconnect extends TheiaServiceActionActivity {
 
     public void onClick(View v)
     {
+        SharedPreferences p = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = p.edit();
+        editor.putBoolean(getString(R.string.key_autoconnect), false);
+        editor.commit();
+
         mTheiaService.disconnect();
         sendBroadcast(new Intent(THEIA_DISCONNECTED));
         finish();
