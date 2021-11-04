@@ -101,8 +101,17 @@ public class DS1UpdateTest extends DS1ServiceActionACtivity {
             public void onCheckedChanged(CompoundButton b, boolean s)
             {
                 if (recoverCheck.isChecked()) {
+
                     AlertDialog alert = builder.create();
                     alert.show();
+                    updateButton.setEnabled(true);
+                }
+                else
+                {
+                    if (currentVersion.getCurrentTextColor() == Color.GREEN)
+                    {
+                        updateButton.setEnabled(false);
+                    }
                 }
             }
         });
@@ -150,6 +159,10 @@ public class DS1UpdateTest extends DS1ServiceActionACtivity {
                                     else
                                     {
                                         currentVersion.setTextColor(Color.GREEN);
+                                        if(!(recoverCheck.isChecked()))
+                                        {
+                                            updateButton.setEnabled(false);
+                                        }
                                     }
                                 }
                             });
@@ -185,6 +198,17 @@ public class DS1UpdateTest extends DS1ServiceActionACtivity {
                                 }
                                 lastupdateEnable = mDS1Service.updating;
                                 updateButton.setEnabled(!mDS1Service.updating);
+                                if(mDS1Service.updating)
+                                {
+                                    updateButton.setEnabled(false);
+                                }
+                                else
+                                {
+                                    if(recoverCheck.isChecked())
+                                        updateButton.setEnabled(true);
+                                    else
+                                        updateButton.setEnabled(currentVersion.getCurrentTextColor() != Color.GREEN);
+                                }
                                 updateProgress.setProgress(ut.getProgressPercent());
                                 updateProgressText.setText(ut.getProgressText());
                             }
