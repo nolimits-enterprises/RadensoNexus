@@ -18,12 +18,15 @@
 
 package com.noLimits.TheiaNexus;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import com.nolimits.ds1library.DS1Service;
 
 import static com.noLimits.TheiaNexus.TheiaService.THEIA_DISCONNECTED;
+import static com.nolimits.ds1library.DS1Service.DS1_DISCONNECTED;
 
 public class DS1Disconnect extends DS1ServiceActionACtivity {
     @Override
@@ -36,8 +39,13 @@ public class DS1Disconnect extends DS1ServiceActionACtivity {
 
     public void onClick(View v)
     {
+        SharedPreferences p = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = p.edit();
+        editor.putBoolean(getString(R.string.key_autoconnect), false);
+        editor.commit();
+
         mDS1Service.disconnect();
-        sendBroadcast(new Intent(THEIA_DISCONNECTED));
+        sendBroadcast(new Intent(DS1_DISCONNECTED));
         finish();
     }
 }
