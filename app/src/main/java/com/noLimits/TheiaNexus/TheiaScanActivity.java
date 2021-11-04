@@ -86,6 +86,8 @@ public class TheiaScanActivity extends AppCompatActivity {
     private TheiaService mTheiaService;
     private DS1Service mDS1Service;
 
+    SharedPreferences sharedPref;
+
     String devAddr;
 
     public enum DEVICE_TYPE
@@ -175,6 +177,8 @@ public class TheiaScanActivity extends AppCompatActivity {
         mProgress = (ProgressBar) findViewById(R.id.progressBarScan);
 
         BluetoothManager man = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+
+        sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
 
         if (man == null) {
@@ -410,6 +414,26 @@ public class TheiaScanActivity extends AppCompatActivity {
                 {
                     deviceFound = true;
                     mDeviceTypeList.add(DEVICE_TYPE.DS1_TYPE);
+
+                    // attempt to connect if auto connect enabled and same device
+                    if (sharedPref.contains(getString(R.string.key_autoconnect)))
+                    {
+                        if (sharedPref.getBoolean(getString(R.string.key_autoconnect), false) == true)
+                        {
+                            // if autoconnect enabled, see if we should
+                            if (sharedPref.contains(getString(R.string.key_autoconnect_address)))
+                            {
+                                String auto_address = sharedPref.getString(getString(R.string.key_autoconnect_address), "");
+                                if(auto_address.compareTo(r.getDevice().getAddress()) == 0)
+                                {
+                                    selected_device = DEVICE_TYPE.DS1_TYPE;
+                                    mDS1Service.connectTo(auto_address);
+                                }
+                            }
+                        }
+                    }
+
+
                 }
 
 
