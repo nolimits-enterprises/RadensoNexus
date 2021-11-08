@@ -185,4 +185,34 @@
         app:layout_constraintBottom_toTopOf="@+id/radioGroup4"
         app:layout_constraintEnd_toEndOf="@+id/radioGroup4"
         app:layout_constraintStart_toStartOf="@+id/radioGroup4" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup4">
+
+        <RadioButton
+            android:id="@+id/radio_ds1_gps_lockout_KX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="K and X Band" />
+
+        <RadioButton
+            android:id="@+id/radio_ds1_gps_lockout_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All Bands" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lockout Bands"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup6"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroup6"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup6" />
 </androidx.constraintlayout.widget.ConstraintLayout>
