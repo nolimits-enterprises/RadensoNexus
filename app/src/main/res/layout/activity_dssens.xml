@@ -7,6 +7,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Switch
+        android:id="@+id/sw_ds1gatso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="GATSO"
+        app:layout_constraintEnd_toEndOf="@+id/sw_ds1mrcd"
+        app:layout_constraintTop_toBottomOf="@+id/sw_ds1mrcd" />
+
     <Button
         android:id="@+id/btnKaPlus"
         android:layout_width="40dp"

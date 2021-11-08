@@ -225,4 +225,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="K Notch"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroup3"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup3"
+        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView13"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" >
+
+        <RadioButton
+            android:id="@+id/rad_ds1_knotch_off"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Off" />
+
+        <RadioButton
+            android:id="@+id/rad_ds1_knotch_weak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Block Weak" />
+
+        <RadioButton
+            android:id="@+id/rad_ds1_knotch_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Block All" />
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
