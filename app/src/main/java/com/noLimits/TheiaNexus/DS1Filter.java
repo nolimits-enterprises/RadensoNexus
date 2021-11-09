@@ -42,6 +42,10 @@ public class DS1Filter extends DS1ServiceActionACtivity {
     RadioButton rad_Ka_narrow;
     RadioButton rad_Ka_seg;
 
+    RadioButton rad_ds1_knotch_off;
+    RadioButton rad_ds1_knotch_weak;
+    RadioButton rad_ds1_knotch_all;
+
     Switch sw_1;
     Switch sw_2;
     Switch sw_3;
@@ -69,6 +73,10 @@ public class DS1Filter extends DS1ServiceActionACtivity {
         rad_Ka_wide = (RadioButton)findViewById(R.id.radio_ka_wide);
         rad_Ka_narrow = (RadioButton)findViewById(R.id.radio_ka_narrow);
         rad_Ka_seg = (RadioButton)findViewById(R.id.radio_ka_seg);
+
+        rad_ds1_knotch_off = (RadioButton)findViewById(R.id.rad_ds1_knotch_off);
+        rad_ds1_knotch_weak = (RadioButton)findViewById(R.id.rad_ds1_knotch_weak);
+        rad_ds1_knotch_all =  (RadioButton)findViewById(R.id.rad_ds1_knotch_all);
 
         sw_TSR = (Switch)findViewById(R.id.sw_TSR);
         sw_k = (Switch)findViewById(R.id.sw_K_filter);
@@ -130,6 +138,7 @@ public class DS1Filter extends DS1ServiceActionACtivity {
             case R.id.sw_seg9:
                 mDS1Service.setSeg(checked, 8);
                 break;
+
         }
     }
 
@@ -161,6 +170,16 @@ public class DS1Filter extends DS1ServiceActionACtivity {
                 mDS1Service.setKaWidth(DS1Service.Width.WIDTH_SEG);
                 enabled_ka_seg(true);
                 break;
+            case R.id.rad_ds1_knotch_all:
+                mDS1Service.setKNotch(DS1Service.K_Notch.K_NOTCH_BLOCK_ALL);
+                break;
+            case R.id.rad_ds1_knotch_off:
+                mDS1Service.setKNotch(DS1Service.K_Notch.K_NOTCH_OFF);
+                break;
+            case R.id.rad_ds1_knotch_weak:
+                mDS1Service.setKNotch(DS1Service.K_Notch.K_NOTCH_BLOCK_WEAK);
+                break;
+
 
         }
     }
@@ -258,6 +277,21 @@ public class DS1Filter extends DS1ServiceActionACtivity {
                         //rad_Ka_narrow.setChecked(false);
                         rad_Ka_wide.setChecked(true);
                         //rad_Ka_seg.setChecked(false);
+                        break;
+                }
+
+                DS1Service.K_Notch k = mDS1Service.getmSetting().k_notch;
+
+                switch (k)
+                {
+                    case K_NOTCH_BLOCK_ALL:
+                        rad_ds1_knotch_all.setChecked(true);
+                        break;
+                    case K_NOTCH_BLOCK_WEAK:
+                        rad_ds1_knotch_weak.setChecked(true);
+                        break;
+                    default:
+                        rad_ds1_knotch_off.setChecked(true);
                         break;
                 }
 

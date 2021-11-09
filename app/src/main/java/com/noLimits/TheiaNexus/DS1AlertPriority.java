@@ -21,7 +21,7 @@ public class DS1AlertPriority extends DS1ServiceActionACtivity {
 
         setTitle("Idle selection");
 
-        setContentView(R.layout.activity_ds1idle);
+        setContentView(R.layout.activity_ds1alertpriority);
 
         rb_scan = (RadioButton)findViewById(R.id.radio_idle_scan);
         rb_time = (RadioButton)findViewById(R.id.radio_idle_time);

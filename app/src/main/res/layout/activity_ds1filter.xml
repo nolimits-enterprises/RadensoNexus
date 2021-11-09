@@ -246,18 +246,21 @@
             android:id="@+id/rad_ds1_knotch_off"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="Off" />
 
         <RadioButton
             android:id="@+id/rad_ds1_knotch_weak"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="Block Weak" />
 
         <RadioButton
             android:id="@+id/rad_ds1_knotch_all"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="Block All" />
     </RadioGroup>
 
