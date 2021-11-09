@@ -18,12 +18,14 @@
             android:id="@+id/rad_alertpri_band"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="Band" />
 
         <RadioButton
             android:id="@+id/rad_alertpri_signal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="Signal" />
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

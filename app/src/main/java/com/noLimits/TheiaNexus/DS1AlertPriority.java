@@ -8,10 +8,8 @@ import com.nolimits.ds1library.DS1Service;
 
 public class DS1AlertPriority extends DS1ServiceActionACtivity {
 
-    RadioButton rb_scan;
-    RadioButton rb_time;
-    RadioButton rb_smart;
-    RadioButton rb_dark;
+    RadioButton rb_band;
+    RadioButton rb_signal;
 
 
 
@@ -19,14 +17,12 @@ public class DS1AlertPriority extends DS1ServiceActionACtivity {
     public void onCreate (Bundle b) {
         super.onCreate(b);
 
-        setTitle("Idle selection");
+        setTitle("Alert Priority");
 
         setContentView(R.layout.activity_ds1alertpriority);
 
-        rb_scan = (RadioButton)findViewById(R.id.radio_idle_scan);
-        rb_time = (RadioButton)findViewById(R.id.radio_idle_time);
-        rb_smart = (RadioButton)findViewById(R.id.radio_idle_smart);
-        rb_dark = (RadioButton)findViewById(R.id.radio_idle_dark);
+        rb_band = (RadioButton)findViewById(R.id.rad_alertpri_band);
+        rb_signal = (RadioButton)findViewById(R.id.rad_alertpri_signal);
 
     }
 
@@ -37,17 +33,11 @@ public class DS1AlertPriority extends DS1ServiceActionACtivity {
             return;
 
         switch(view.getId()) {
-            case R.id.radio_idle_scan:
-                mDS1Service.setIdle(DS1Service.Idle_Mode.IDLE_SCAN);
+            case R.id.rad_alertpri_band:
+                mDS1Service.setAlertPrioritySignal(false);
                 break;
-            case R.id.radio_idle_time:
-                mDS1Service.setIdle(DS1Service.Idle_Mode.IDLE_TIME);
-                break;
-            case R.id.radio_idle_smart:
-                mDS1Service.setIdle(DS1Service.Idle_Mode.IDLE_SMART);
-                break;
-            case R.id.radio_idle_dark:
-                mDS1Service.setIdle(DS1Service.Idle_Mode.IDLE_DARK);
+            case R.id.rad_alertpri_signal:
+                mDS1Service.setAlertPrioritySignal(true);
                 break;
         }
     }
@@ -61,37 +51,12 @@ public class DS1AlertPriority extends DS1ServiceActionACtivity {
                 if (mDS1Service == null)
                     return;
 
-                DS1Service.Idle_Mode idle;
-                idle = mDS1Service.getmSetting().idle_mode;
+                boolean pri = mDS1Service.getmSetting().signal_priority;
 
-                switch (idle)
-                {
-                    case IDLE_SCAN:
-
-                        rb_scan.setChecked(true);
-                        rb_dark.setChecked(false);
-                        rb_smart.setChecked(false);
-                        rb_time.setChecked(false);
-                        break;
-                    case IDLE_TIME:
-                        rb_scan.setChecked(false);
-                        rb_dark.setChecked(false);
-                        rb_smart.setChecked(false);
-                        rb_time.setChecked(true);
-                        break;
-                    case IDLE_SMART:
-                        rb_scan.setChecked(false);
-                        rb_dark.setChecked(false);
-                        rb_smart.setChecked(true);
-                        rb_time.setChecked(false);
-                        break;
-                    case IDLE_DARK:
-                        rb_scan.setChecked(false);
-                        rb_dark.setChecked(true);
-                        rb_smart.setChecked(false);
-                        rb_time.setChecked(false);
-                        break;
-                }
+                if (pri)
+                    rb_signal.setChecked(true);
+                else
+                    rb_band.setChecked(true);
 
             }
         });
