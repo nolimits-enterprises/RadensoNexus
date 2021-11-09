@@ -32,7 +32,7 @@ public class DS1KNotch extends DS1ServiceActionACtivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (!disableCheck)
-                    mDS1Service.setDispFreq(isChecked);
+                    mDS1Service.setKNotchDisplay(isChecked);
             }
         });
 
@@ -48,7 +48,7 @@ public class DS1KNotch extends DS1ServiceActionACtivity {
 
                 disableCheck = true;
 
-                //sw.setChecked(mDS1Service.getmSetting().freq_disp);
+                sw.setChecked(mDS1Service.getmSetting().k_notch_display);
 
                 disableCheck = false;
             }
