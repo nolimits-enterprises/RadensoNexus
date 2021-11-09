@@ -55,7 +55,7 @@ public class DS1AlertPriority extends DS1ServiceActionACtivity {
     @Override
     void onGotResult()
     {
-        DS1Idle.this.runOnUiThread(new Runnable(){
+        DS1AlertPriority.this.runOnUiThread(new Runnable(){
 
             public void run() {
                 if (mDS1Service == null)
