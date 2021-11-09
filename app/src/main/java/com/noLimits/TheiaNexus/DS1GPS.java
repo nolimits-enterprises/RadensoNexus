@@ -47,6 +47,9 @@ public class DS1GPS extends DS1ServiceActionACtivity {
     RadioButton rb_alert_medium;
     RadioButton rb_alert_long;
 
+    RadioButton radio_ds1_gps_lockout_KX;
+    RadioButton radio_ds1_gps_lockout_all;
+
     SeekBar sb_rlc;
 
     TextView txt_rlc;
@@ -77,6 +80,7 @@ public class DS1GPS extends DS1ServiceActionACtivity {
             case R.id.sw_gps_rlc_speed:
                 mDS1Service.setGPSRLCSpeedEnable(checked);
                 break;
+
         }
     }
 
@@ -116,6 +120,13 @@ public class DS1GPS extends DS1ServiceActionACtivity {
                 mDS1Service.setGPSAlertDist(DS1Service.Alert_Distance.ALERT_DISTANCE_LONG);
                 break;
 
+            case R.id.radio_ds1_gps_lockout_KX:
+                mDS1Service.setLockoutBands(DS1Service.Lockout_Bands.LOCKOUT_BANDS_KX);
+                break;
+            case R.id.radio_ds1_gps_lockout_all:
+                mDS1Service.setLockoutBands(DS1Service.Lockout_Bands.LOCKOUT_BANDS_ALL);
+                break;
+
         }
     }
 
@@ -143,6 +154,10 @@ public class DS1GPS extends DS1ServiceActionACtivity {
         rb_alert_short = (RadioButton) findViewById(R.id.radio_gps_dist_short);
         rb_alert_medium = (RadioButton) findViewById(R.id.radio_gps_dist_med);
         rb_alert_long = (RadioButton) findViewById(R.id.radio_gps_dist_long);
+
+        radio_ds1_gps_lockout_KX = (RadioButton)findViewById(R.id.radio_ds1_gps_lockout_KX);
+        radio_ds1_gps_lockout_all = (RadioButton)findViewById(R.id.radio_ds1_gps_lockout_all);
+
 
         sb_rlc = (SeekBar) findViewById(R.id.seek_gps_rlc);
         txt_rlc = (TextView) findViewById(R.id.txt_gps_rlc_speed);
@@ -237,6 +252,17 @@ public class DS1GPS extends DS1ServiceActionACtivity {
                         break;
                     case ALERT_DISTANCE_SHORT:
                         rb_alert_short.setChecked(true);
+                        break;
+                }
+
+                DS1Service.Lockout_Bands bands = mDS1Service.getmSetting().lockout_bands;
+                switch(bands)
+                {
+                    case LOCKOUT_BANDS_ALL:
+                        radio_ds1_gps_lockout_all.setChecked(true);
+                        break;
+                    default:
+                        radio_ds1_gps_lockout_KX.setChecked(true);
                         break;
                 }
 
