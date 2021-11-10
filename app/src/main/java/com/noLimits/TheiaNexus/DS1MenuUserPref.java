@@ -32,6 +32,8 @@ public class DS1MenuUserPref extends DS1Menu{
         intentMenu.add(new DS1Menu.activityConfiguration(DS1Mode.class));
         arrayMenu.add("    Display Frequency");                   // 2
         intentMenu.add(new DS1Menu.activityConfiguration(DS1FreqDisp.class));
+        arrayMenu.add("    Ka Frequency Voice");                   // 2
+        intentMenu.add(new DS1Menu.activityConfiguration(DS1KaFreqVoice.class));
         arrayMenu.add("    Low Speed Mute");                   // 2
         intentMenu.add(new DS1Menu.activityConfiguration(DS1_LowSpeedMute.class));
         arrayMenu.add("    MRCD Low Speed Mute");                   // 2

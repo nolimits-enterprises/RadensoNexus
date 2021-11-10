@@ -193,6 +193,9 @@
         <activity android:name=".DS1MenuSettings"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".DS1KaFreqVoice"
+            android:screenOrientation="portrait">
+        </activity>
 
 
 

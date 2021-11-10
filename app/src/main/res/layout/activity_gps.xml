@@ -198,12 +198,14 @@
             android:id="@+id/radio_ds1_gps_lockout_KX"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="K and X Band" />
 
         <RadioButton
             android:id="@+id/radio_ds1_gps_lockout_all"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="All Bands" />
     </RadioGroup>
 

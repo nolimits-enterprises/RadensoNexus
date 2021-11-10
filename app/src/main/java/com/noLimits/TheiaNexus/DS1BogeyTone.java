@@ -109,19 +109,19 @@ public class DS1BogeyTone extends DS1ServiceActionACtivity {
 
         switch(tone)
         {
-            case 1:
+            case 0:
                 rb_1.setChecked(true);
                 break;
-            case 2:
+            case 1:
                 rb_2.setChecked(true);
                 break;
-            case 3:
+            case 2:
                 rb_3.setChecked(true);
                 break;
-            case 4:
+            case 3:
                 rb_4.setChecked(true);
                 break;
-            case 5:
+            case 4:
                 rb_5.setChecked(true);
                 break;
         }
