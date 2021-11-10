@@ -43,6 +43,8 @@ public class DS1Channels extends DS1ServiceActionACtivity {
     TextView text_K;
     TextView text_Ka;
 
+    Switch sw_gatso;
+
     boolean disableCheck = false;
 
 
@@ -67,6 +69,9 @@ public class DS1Channels extends DS1ServiceActionACtivity {
         text_X = (TextView)findViewById(R.id.text_sense_X);
         text_K = (TextView)findViewById(R.id.btnKPlus);
         text_Ka = (TextView)findViewById(R.id.text_sense_Ka);
+
+        sw_gatso = (Switch)findViewById(R.id.sw_ds1gatso);
+
 
 
 
@@ -101,6 +106,9 @@ public class DS1Channels extends DS1ServiceActionACtivity {
                     case R.id.sw_pop_Ka:
                         mDS1Service.setPopKaEnable(isChecked);
                         break;
+                    case R.id.sw_ds1gatso:
+                        mDS1Service.setGatso(isChecked);
+
                 }
 
 
@@ -115,6 +123,7 @@ public class DS1Channels extends DS1ServiceActionACtivity {
         sw_Ka.setOnCheckedChangeListener(checkListener);
         sw_pop_K.setOnCheckedChangeListener(checkListener);
         sw_pop_Ka.setOnCheckedChangeListener(checkListener);
+        sw_gatso.setOnCheckedChangeListener(checkListener);
 
         SeekBar.OnSeekBarChangeListener seekListener = new SeekBar.OnSeekBarChangeListener() {
 
@@ -233,6 +242,7 @@ public class DS1Channels extends DS1ServiceActionACtivity {
                 text_K.setText(String.valueOf(sb_K.getProgress() * 10 + 50) + "%");
                 sb_Ka.setProgress(mDS1Service.getmSetting().custom_Ka);
                 text_Ka.setText(String.valueOf(sb_Ka.getProgress() * 10 + 50) + "%");
+                sw_gatso.setChecked(mDS1Service.getmSetting().gatso);
 
                 disableCheck = false;
             }
