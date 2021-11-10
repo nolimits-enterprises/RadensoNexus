@@ -81,16 +81,16 @@ public class DS1MRCDMute extends DS1ServiceActionACtivity {
     {
         sb.setProgress(sb.getProgress()+1);
         int progress = sb.getProgress();
-        mDS1Service.setVolume(progress);
-        txt.setText(String.valueOf(progress));
+        mDS1Service.setMRCDLowSpeedMute(progress * (metric ? 10 : 5));
+        setMRCDText();
     }
 
     public void onMinus(View v)
     {
         sb.setProgress(sb.getProgress()-1);
         int progress = sb.getProgress();
-        mDS1Service.setVolume(progress);
-        txt.setText(String.valueOf(progress));
+        mDS1Service.setMRCDLowSpeedMute(progress * (metric ? 10 : 5));
+        setMRCDText();
     }
 
     void setMRCDText()
