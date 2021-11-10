@@ -178,6 +178,24 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity android:name=".DS1KNotch"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".DS1AlertPriority"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".DS1MRCDMute"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".DS1BogeyTone"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".DS1MenuSettings"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+
         <activity android:name=".DS1Mode"
             android:screenOrientation="portrait">
         </activity>

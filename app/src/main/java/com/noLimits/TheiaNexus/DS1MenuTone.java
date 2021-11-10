@@ -28,6 +28,8 @@ public class DS1MenuTone extends DS1Menu{
         intentMenu.add(new DS1Menu.activityConfiguration(null));
         headerList.add(arrayMenu.size() - 1);
 
+        arrayMenu.add("    Bogey Tone");                   // 2
+        intentMenu.add(new DS1Menu.activityConfiguration(DS1BogeyTone.class));
         arrayMenu.add("    K Tone");                   // 2
         intentMenu.add(new DS1Menu.activityConfiguration(DS1ToneK.class));
         arrayMenu.add("    Ka Tone");                   // 2

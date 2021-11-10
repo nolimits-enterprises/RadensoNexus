@@ -71,24 +71,10 @@ public class DS1ActionACtivity extends DS1Menu {
         arrayMenu.add("    Volume");                   // 2
         intentMenu.add(new DS1Menu.activityConfiguration(DS1Volume.class));
 
-        arrayMenu.add("    User Preferences");                   // 2
-        intentMenu.add(new DS1Menu.activityConfiguration(DS1MenuUserPref.class));
-
-        arrayMenu.add("    Band");                   // 2
-        intentMenu.add(new DS1Menu.activityConfiguration(DS1MenuBand.class));
-
-        arrayMenu.add("    Display");                   // 2
-        intentMenu.add(new DS1Menu.activityConfiguration(DS1MenuDisplay.class));
-
-        arrayMenu.add("   Tone");                   // 2
-        intentMenu.add(new DS1Menu.activityConfiguration(DS1MenuTone.class));
+        arrayMenu.add("    Settings");                   // 2
+        intentMenu.add(new DS1Menu.activityConfiguration(DS1MenuSettings.class));
 
 
-        arrayMenu.add("   GPS");                   // 2
-        intentMenu.add(new DS1Menu.activityConfiguration(DS1MenuGPS.class));
-
-        arrayMenu.add("   Unit");                   // 2
-        intentMenu.add(new DS1Menu.activityConfiguration(DS1MenuUnit.class));
 
 
         arrayMenu.add("    Update DS1");                   // 2
