@@ -19,6 +19,8 @@
 
 package com.noLimits.TheiaNexus;
 
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +32,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nolimits.ds1library.DS1Service;
 
+import java.io.FileDescriptor;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
@@ -104,11 +107,68 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
                     if (alerts != null) {
                         mAdapter.setAlertList(alerts);
                         mAdapter.notifyDataSetChanged();
+
+                        if (alerts.size() > 0)
+                        {
+                            AssetFileDescriptor afd;
+
+                            int t = 1;
+
+                            if(alerts.get(0).detected)
+                            {
+                                switch (t) {
+                                    default:
+
+                                        afd = getResources().openRawResourceFd(R.raw.s1);
+                                        break;
+                                    case 2:
+                                        afd = getResources().openRawResourceFd(R.raw.s2);
+                                        break;
+                                    case 3:
+                                        afd = getResources().openRawResourceFd(R.raw.s3);
+                                        break;
+                                    case 4:
+                                        afd = getResources().openRawResourceFd(R.raw.s4);
+                                        break;
+                                    case 5:
+                                        afd = getResources().openRawResourceFd(R.raw.s5);
+                                        break;
+                                    case 6:
+                                        afd = getResources().openRawResourceFd(R.raw.s6);
+                                        break;
+                                    case 7:
+                                        afd = getResources().openRawResourceFd(R.raw.s7);
+                                        break;
+                                    case 8:
+                                        afd = getResources().openRawResourceFd(R.raw.s8);
+                                        break;
+                                    case 9:
+                                        afd = getResources().openRawResourceFd(R.raw.s9);
+                                        break;
+                                    case 10:
+                                        afd = getResources().openRawResourceFd(R.raw.s10);
+                                        break;
+
+                                }
+
+                                FileDescriptor fd = afd.getFileDescriptor();
+                                MediaPlayer player = new MediaPlayer();
+                                try {
+                                    player.setDataSource(fd, afd.getStartOffset(),
+                                            afd.getLength());
+                                    player.setLooping(false);
+                                    player.prepare();
+                                    player.start();
+                                } catch (Exception e) {
+                                }
+                            }
+                        }
                     }
                 }
             });
         }
-
     }
 
 }
+
+
