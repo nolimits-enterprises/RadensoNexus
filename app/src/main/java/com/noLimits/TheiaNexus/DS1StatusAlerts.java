@@ -80,10 +80,8 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
     {
         super.onResume();
 
-
-
-
-
+        if (mDS1Service != null)
+            mDS1Service.enableAlertNotifications();
 
     }
 
@@ -91,6 +89,10 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
     public void onPause()
     {
         super.onPause();
+        if (mDS1Service != null) {
+            mDS1Service.disableAlertNotifications();
+            mDS1Service.clearQueue();
+        }
     }
 
     @Override
