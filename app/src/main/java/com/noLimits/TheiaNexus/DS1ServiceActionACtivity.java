@@ -46,6 +46,11 @@ public class DS1ServiceActionACtivity extends AppCompatActivity{
 
     protected void onConnectedTask(){}
 
+    protected void onGotService()
+    {
+
+    }
+
     @Override
     public  void onCreate (Bundle b) {
         super.onCreate(b);
@@ -58,6 +63,7 @@ public class DS1ServiceActionACtivity extends AppCompatActivity{
                 mDS1Service = ((DS1Service.ThisBinder) s).getService();
 
                 onConnectedTask();
+                onGotService();
 
                 if (false &&  !mDS1Service.connectTo(devAddr))
                 {

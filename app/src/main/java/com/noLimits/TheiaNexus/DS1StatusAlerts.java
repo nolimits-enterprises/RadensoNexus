@@ -66,11 +66,21 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
     }
 
     @Override
+    protected void onGotService()
+    {
+        if (mDS1Service != null)
+            mDS1Service.enableAlertNotifications();
+    }
+
+    @Override
     public void onResume()
     {
         super.onResume();
-        if (mDS1Service != null)
-            mDS1Service.enableAlertNotifications();
+
+
+
+
+
 
     }
 
