@@ -35,25 +35,42 @@ public class DS1BogeyTone extends DS1ServiceActionACtivity {
             if (!checked)
                 return;
 
+            AssetFileDescriptor afd;
 
 
             switch (view.getId()) {
                 default:
                     setTone(1);
+                    afd = getResources().openRawResourceFd(R.raw.bogey1);
                     break;
                 case R.id.radio_tone_2:
                     setTone(2);
+                    afd = getResources().openRawResourceFd(R.raw.bogey2);
                     break;
                 case R.id.radio_tone_3:
                     setTone(3);
+                    afd = getResources().openRawResourceFd(R.raw.bogey3);
                     break;
                 case R.id.radio_tone_4:
                     setTone(4);
+                    afd = getResources().openRawResourceFd(R.raw.bogey4);
                     break;
                 case R.id.radio_tone_5:
                     setTone(5);
+                    afd = getResources().openRawResourceFd(R.raw.bogey5);
                     break;
 
+            }
+
+            FileDescriptor fd = afd.getFileDescriptor();
+            MediaPlayer player = new MediaPlayer();
+            try {
+                player.setDataSource(fd, afd.getStartOffset(),
+                        afd.getLength());
+                player.setLooping(false);
+                player.prepare();
+                player.start();
+            } catch (Exception e) {
             }
 
         }
