@@ -101,6 +101,21 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
             mDS1Service.disableAlertNotifications();
             mDS1Service.clearQueue();
         }
+        if (mTimer != null)
+        {
+
+            try {
+                mTimer.cancel();
+            } catch (Exception e) {}
+        }
+
+        if (clearTask != null)
+        {
+
+            try {
+                clearTask.cancel();
+            } catch (Exception e) {}
+        }
     }
 
     @Override
