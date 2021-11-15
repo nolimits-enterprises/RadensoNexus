@@ -187,7 +187,7 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
             e.band = 1;
 
         }
-        else if (0 == a.type.compareTo("Ka"))
+        else if (0 == a.type.compareTo("KA"))
         {
             e.alert_class = 0;
             e.band = 2;
