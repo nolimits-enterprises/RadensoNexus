@@ -44,6 +44,10 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
     private RecyclerView mRecycler;
     private Timer mTimer;
 
+    private Timer timer;
+
+    TimerTask clearTask;
+
     public void refreshClick(View v)
     {
 
@@ -64,6 +68,10 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
         mAdapter = new AlertsAdapter();
         mRecycler.setLayoutManager(new LinearLayoutManager(this));
         mRecycler.setAdapter(mAdapter);
+
+
+
+
 
 
     }
@@ -107,8 +115,52 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
                 @Override
                 public void run() {
                     if (alerts != null) {
+
+                        if ((alerts.size() == 0) || (alerts.get(0).detected == false))
+                        {
+                            if (mTimer != null) {
+                                try {
+                                    mTimer.cancel();
+                                    clearTask.cancel();
+                                }
+                                catch (Exception e){}
+                            }
+                            mTimer = new Timer();
+                            clearTask = new TimerTask() {
+
+                                @Override
+                                public void run() {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Vector<DS1Service.RD_Alert> alerts = mDS1Service.getmAlerts();
+                                            alerts.clear();
+                                            if (alerts != null) {
+                                                mAdapter.setAlertList(alerts);
+                                                mAdapter.notifyDataSetChanged();
+                                            }
+                                        }
+                                    });
+                                };
+                            };
+                            mTimer.schedule(clearTask, 6000);
+                            return;
+                        }
+                        else
+                        {
+                            try {
+                                if (mTimer != null) {
+                                    mTimer.cancel();
+                                    clearTask.cancel();
+                                }
+                            }
+                            catch (Exception e) {};
+                        }
+
                         mAdapter.setAlertList(alerts);
                         mAdapter.notifyDataSetChanged();
+
+
 
                         if (alerts.size() > 0)
                         {
