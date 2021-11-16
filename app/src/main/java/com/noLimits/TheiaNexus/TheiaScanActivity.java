@@ -222,8 +222,12 @@ public class TheiaScanActivity extends AppCompatActivity {
         }
 
          */
+
+
+
         Intent theiaServiceIntent = new Intent(this, TheiaService.class);
         Intent DS1ServiceIntent = new Intent(this, DS1Service.class);
+
         bindService(theiaServiceIntent, mServCon, BIND_AUTO_CREATE);
         bindService(DS1ServiceIntent, mDS1Con, BIND_AUTO_CREATE);
 
@@ -517,5 +521,12 @@ public class TheiaScanActivity extends AppCompatActivity {
             }
         }
     };
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        finish();
+    }
 
 }

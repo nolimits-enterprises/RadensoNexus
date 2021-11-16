@@ -149,6 +149,13 @@ public class DS1UpdateTest extends DS1ServiceActionACtivity {
                             DS1UpdateTest.this.runOnUiThread(new Runnable() {
 
                                 public void run() {
+                                    if ((mDS1Service == null ) || (mDS1Service.mVersion == null))
+                                    {
+                                        currentVersion.setTextColor(Color.RED);
+                                        currentVersion.setText("");
+                                        updateButton.setEnabled(false);
+                                        return;
+                                    }
                                     currentVersion.setText("Current version  : " + mDS1Service.mVersion.ui + " [ gps_db : " + mDS1Service.mVersion.gps_db + " ]");
                                     DS1Service.updateMergeFile mf = mDS1Service.getUpdateMergeFile();
                                     String gps_db_ver = String.valueOf(mf.gps_db.version).substring(0,4) + "." + String.valueOf(mf.gps_db.version).substring(4,6) + "." + String.valueOf(mf.gps_db.version).substring(6);
@@ -253,9 +260,25 @@ public class DS1UpdateTest extends DS1ServiceActionACtivity {
                 if (mDS1Service.updating)
                     mDS1Service.ut.cancelUpdate();
             }
+
+            mDS1Service.clearQueue();
         }
 
         updateTimer.cancel();
+
+        onStop();
+
+
+    }
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        versionRequested = false;
+        mDS1Service.mVersion = null;
+        finish();
+
 
     }
 
