@@ -152,7 +152,7 @@ public class DS1UpdateTest extends DS1ServiceActionACtivity {
                                     currentVersion.setText("Current version  : " + mDS1Service.mVersion.ui + " [ gps_db : " + mDS1Service.mVersion.gps_db + " ]");
                                     DS1Service.updateMergeFile mf = mDS1Service.getUpdateMergeFile();
                                     String gps_db_ver = String.valueOf(mf.gps_db.version).substring(0,4) + "." + String.valueOf(mf.gps_db.version).substring(4,6) + "." + String.valueOf(mf.gps_db.version).substring(6);
-                                    if ((0 != mf.getVersion().compareTo(mDS1Service.mVersion.ui)) || (0 == gps_db_ver.compareTo(mDS1Service.mVersion.gps_db)))
+                                    if ((0 != mf.getVersion().compareTo(mDS1Service.mVersion.ui)) || (0 != gps_db_ver.compareTo(mDS1Service.mVersion.gps_db)))
                                     {
                                         // same version
                                         currentVersion.setTextColor(Color.RED);
