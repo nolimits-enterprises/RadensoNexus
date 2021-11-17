@@ -336,6 +336,7 @@ public class TheiaScanActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         unregisterReceiver(mTheiaReceiver);
+        onStop();
     }
 
     private void startScan()

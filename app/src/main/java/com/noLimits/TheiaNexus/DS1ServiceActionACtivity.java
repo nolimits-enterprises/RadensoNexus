@@ -139,6 +139,11 @@ public class DS1ServiceActionACtivity extends AppCompatActivity{
     {
         running = false;
         super.onPause();
+
+        if (mDS1Service != null)
+        {
+            mDS1Service.clearQueue();
+        }
     }
 
     @Override
