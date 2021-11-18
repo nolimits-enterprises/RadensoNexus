@@ -125,6 +125,7 @@ public class DS1ServiceActionACtivity extends AppCompatActivity{
 
         if (mDS1Service != null)
         {
+            mDS1Service.clearQueue();
             mDS1Service.enableSettingNotifications();
         }
 

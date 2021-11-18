@@ -116,6 +116,9 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
                 clearTask.cancel();
             } catch (Exception e) {}
         }
+
+        onStop();
+        finish();
     }
 
     @Override
