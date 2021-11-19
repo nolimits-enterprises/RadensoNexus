@@ -39,36 +39,6 @@
         app:layout_constraintEnd_toEndOf="@+id/swi_gps_sig"
         app:layout_constraintTop_toBottomOf="@+id/swi_gps_sig" />
 
-    <Switch
-        android:id="@+id/sw_gps_rlc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:onClick="onSwitchClicked"
-        android:text="Red Light Camera"
-        app:layout_constraintEnd_toEndOf="@+id/sw_gps_lockout"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
-
-    <Switch
-        android:id="@+id/sw_gps_speed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:onClick="onSwitchClicked"
-        android:text="Speed Camera"
-        app:layout_constraintEnd_toEndOf="@+id/sw_gps_rlc"
-        app:layout_constraintTop_toBottomOf="@+id/sw_gps_rlc" />
-
-    <Switch
-        android:id="@+id/sw_gps_rlc_speed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:onClick="onSwitchClicked"
-        android:text="RLC &amp; Speed Cam"
-        app:layout_constraintEnd_toEndOf="@+id/sw_gps_speed"
-        app:layout_constraintTop_toBottomOf="@+id/sw_gps_speed" />
-
     <RadioGroup
         android:id="@+id/radioGroup2"
         android:layout_width="wrap_content"
@@ -113,40 +83,13 @@
             android:text="200 mile" />
     </RadioGroup>
 
-    <SeekBar
-        android:id="@+id/seek_gps_rlc"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:max="200"
-        app:layout_constraintStart_toEndOf="@+id/sw_gps_speed"
-        app:layout_constraintTop_toTopOf="@+id/sw_gps_speed" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Red Light Cam Auto Mute"
-        app:layout_constraintBottom_toTopOf="@+id/seek_gps_rlc"
-        app:layout_constraintEnd_toEndOf="@+id/seek_gps_rlc"
-        app:layout_constraintStart_toStartOf="@+id/seek_gps_rlc" />
-
-    <TextView
-        android:id="@+id/txt_gps_rlc_speed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/seek_gps_rlc"
-        app:layout_constraintStart_toStartOf="@+id/seek_gps_rlc"
-        app:layout_constraintTop_toBottomOf="@+id/seek_gps_rlc" />
-
     <RadioGroup
         android:id="@+id/radioGroup4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="@+id/radioGroup2"
-        app:layout_constraintTop_toBottomOf="@+id/sw_gps_rlc_speed">
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2">
 
         <RadioButton
             android:id="@+id/radio_gps_dist_auto"

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:screenOrientation="portrait"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Switch
+        android:id="@+id/sw_gps_rlc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:onClick="onSwitchClicked"
+        android:text="Red Light Camera"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/sw_gps_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="Speed Camera"
+        app:layout_constraintEnd_toEndOf="@+id/sw_gps_rlc"
+        app:layout_constraintTop_toBottomOf="@+id/sw_gps_rlc" />
+
+    <Switch
+        android:id="@+id/sw_gps_rlc_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onSwitchClicked"
+        android:text="RLC &amp; Speed Cam"
+        app:layout_constraintEnd_toEndOf="@+id/sw_gps_speed"
+        app:layout_constraintTop_toBottomOf="@+id/sw_gps_speed" />
+
+    <SeekBar
+        android:id="@+id/seek_gps_rlc"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:max="200"
+        app:layout_constraintStart_toEndOf="@+id/sw_gps_speed"
+        app:layout_constraintTop_toTopOf="@+id/sw_gps_speed" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Red Light Cam Auto Mute"
+        app:layout_constraintBottom_toTopOf="@+id/seek_gps_rlc"
+        app:layout_constraintEnd_toEndOf="@+id/seek_gps_rlc"
+        app:layout_constraintStart_toStartOf="@+id/seek_gps_rlc" />
+
+    <TextView
+        android:id="@+id/txt_gps_rlc_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/seek_gps_rlc"
+        app:layout_constraintStart_toStartOf="@+id/seek_gps_rlc"
+        app:layout_constraintTop_toBottomOf="@+id/seek_gps_rlc" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
