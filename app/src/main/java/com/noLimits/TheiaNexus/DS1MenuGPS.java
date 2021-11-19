@@ -28,6 +28,8 @@ public class DS1MenuGPS extends DS1Menu{
         intentMenu.add(new DS1Menu.activityConfiguration(null));
         headerList.add(arrayMenu.size() - 1);
 
+        arrayMenu.add("    Cam Settings");                   // 2
+        intentMenu.add(new DS1Menu.activityConfiguration(DS1cam.class));
         arrayMenu.add("    GPS Settings");                   // 2
         intentMenu.add(new DS1Menu.activityConfiguration(DS1GPS.class));
         arrayMenu.add("    GPS Points");                   // 2

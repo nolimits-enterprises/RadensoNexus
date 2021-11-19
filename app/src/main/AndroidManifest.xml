@@ -178,6 +178,10 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity android:name=".DS1cam"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity android:name=".DS1KNotch"
             android:screenOrientation="portrait">
         </activity>
