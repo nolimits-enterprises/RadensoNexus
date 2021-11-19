@@ -28,26 +28,15 @@ import android.widget.Switch;
 import android.widget.TextView;
 import com.nolimits.ds1library.DS1Service;
 
-public class DS1GPS extends DS1ServiceActionACtivity {
-    Switch sw_gps;
-    Switch sw_sig;
-    Switch sw_auto;
+public class DS1cam extends DS1ServiceActionACtivity {
 
+    Switch sw_rlc;
+    Switch sw_speed;
+    Switch sw_rlc_speed;
 
-    RadioButton rb_auto_nl;
-    RadioButton rb_auto_50;
-    RadioButton rb_auto_100;
-    RadioButton rb_auto_150;
-    RadioButton rb_auto_200;
+    SeekBar sb_rlc;
 
-    RadioButton rb_alert_auto;
-    RadioButton rb_alert_short;
-    RadioButton rb_alert_medium;
-    RadioButton rb_alert_long;
-
-    RadioButton radio_ds1_gps_lockout_KX;
-    RadioButton radio_ds1_gps_lockout_all;
-
+    TextView txt_rlc;
 
     boolean metric = false;
 
@@ -129,90 +118,118 @@ public class DS1GPS extends DS1ServiceActionACtivity {
     public void onCreate (Bundle b) {
         super.onCreate(b);
 
-        setTitle("GPS Configuration");
+        setTitle("Cam Configuration");
 
-        setContentView(R.layout.activity_gps);
-        sw_gps = (Switch) findViewById(R.id.sw_GPS);
-        sw_sig = (Switch) findViewById(R.id.swi_gps_sig);
-        sw_auto = (Switch) findViewById(R.id.sw_gps_lockout);
+        setContentView(R.layout.activity_ds1cam);
+        sw_rlc = (Switch) findViewById(R.id.sw_gps_rlc);
+        sw_speed = (Switch) findViewById(R.id.sw_gps_speed);
+        sw_rlc_speed = (Switch) findViewById(R.id.sw_gps_rlc_speed);
 
-        rb_auto_nl = (RadioButton) findViewById(R.id.radio_gps_auto_nl);
-        rb_auto_50 = (RadioButton) findViewById(R.id.radio_gps_auto_50);
-        rb_auto_100 = (RadioButton) findViewById(R.id.radio_gps_auto_100);
-        rb_auto_150 = (RadioButton) findViewById(R.id.radio_gps_auto_150);
-        rb_auto_200 = (RadioButton) findViewById(R.id.radio_gps_auto_200);
+        sb_rlc = (SeekBar) findViewById(R.id.seek_gps_rlc);
+        txt_rlc = (TextView) findViewById(R.id.txt_gps_rlc_speed);
 
-        rb_alert_auto = (RadioButton) findViewById(R.id.radio_gps_dist_auto);
-        rb_alert_short = (RadioButton) findViewById(R.id.radio_gps_dist_short);
-        rb_alert_medium = (RadioButton) findViewById(R.id.radio_gps_dist_med);
-        rb_alert_long = (RadioButton) findViewById(R.id.radio_gps_dist_long);
+        sb_rlc.setMax(4);
 
-        radio_ds1_gps_lockout_KX = (RadioButton) findViewById(R.id.radio_ds1_gps_lockout_KX);
-        radio_ds1_gps_lockout_all = (RadioButton) findViewById(R.id.radio_ds1_gps_lockout_all);
+        sb_rlc.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // do nothing for now
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // do nothing for now
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,
+                                          boolean fromUser) {
+                if (fromUser)
+                {
+                    if (mDS1Service != null)
+                    {
+                        if (progress == 0)
+                        {
+                            mDS1Service.setGPSRLCAutoMute(progress);
+                        }
+                        else
+                        {
+                            if (metric)
+                            {
+                                mDS1Service.setGPSRLCAutoMute(progress * 10 + 80);
+                            }
+                            else {
+                                mDS1Service.setGPSRLCAutoMute(progress * 5 + 50);
+                            }
+                        }
+
+                        update_mute_text();
+
+                    }
+                }
+            }
+        });
+
     }
 
-
+    void update_mute_text()
+    {
+        if (sb_rlc.getProgress() == 0)
+            txt_rlc.setText("Off");
+        else {
+            if (metric)
+            {
+                txt_rlc.setText(String.valueOf(sb_rlc.getProgress() * 10 + 80) + " mph");
+            }
+            else {
+                txt_rlc.setText(String.valueOf(sb_rlc.getProgress() * 5 + 50) + " mph");
+            }
+        }
+    }
 
     @Override
     void onGotResult()
     {
-        DS1GPS.this.runOnUiThread(new Runnable() {
+        DS1cam.this.runOnUiThread(new Runnable() {
 
             public void run() {
                 if (mDS1Service == null)
                     return;
 
-                sw_gps.setChecked(mDS1Service.getmSetting().gps);
-                sw_sig.setChecked(mDS1Service.getmSetting().gps_announce);
-                sw_auto.setChecked(mDS1Service.getmSetting().auto_lockout);
 
-                DS1Service.Alert_Distance dist = mDS1Service.getmSetting().alert_distance;
-                switch(dist)
+                sw_rlc.setChecked(mDS1Service.getmSetting().red_light_cam);
+                sw_speed.setChecked(mDS1Service.getmSetting().speed_cam);
+                sw_rlc_speed.setChecked(mDS1Service.getmSetting().red_light_and_speed_cam);
+
+
+
+                int auto_mute = mDS1Service.getmSetting().rlc_auto_mute;
+                metric = (mDS1Service.getmSetting().unit_standard);
+
+                if(metric)
                 {
-                    case ALERT_DISTANCE_AUTO:
-                        rb_alert_auto.setChecked(true);
-                        break;
-                    case ALERT_DISTANCE_LONG:
-                        rb_alert_long.setChecked(true);
-                        break;
-                    case ALERT_DISTANCE_MEDIUM:
-                        rb_alert_medium.setChecked(true);
-                        break;
-                    case ALERT_DISTANCE_SHORT:
-                        rb_alert_short.setChecked(true);
-                        break;
+                    sb_rlc.setMax(3);
+                }
+                else
+                {
+                    sb_rlc.setMax(4);
                 }
 
-                DS1Service.Lockout_Bands bands = mDS1Service.getmSetting().lockout_bands;
-                switch(bands)
-                {
-                    case LOCKOUT_BANDS_ALL:
-                        radio_ds1_gps_lockout_all.setChecked(true);
-                        break;
-                    default:
-                        radio_ds1_gps_lockout_KX.setChecked(true);
-                        break;
+                if (auto_mute == 0) {
+                    sb_rlc.setProgress(auto_mute);
                 }
-
-                int lockout_limit = mDS1Service.getmSetting().lockout_limit;
-                switch(lockout_limit)
+                else
                 {
-                    case 0:
-                        rb_auto_nl.setChecked(true);
-                        break;
-                    case 50:
-                        rb_auto_50.setChecked(true);
-                        break;
-                    case 100:
-                        rb_auto_100.setChecked(true);
-                        break;
-                    case 150:
-                        rb_auto_150.setChecked(true);
-                        break;
-                    case 200:
-                        rb_auto_200.setChecked(true);
-                        break;
+                    if (metric)
+                    {
+                        sb_rlc.setProgress((auto_mute - 80)/10);
+                    }
+                    else {
+                        sb_rlc.setProgress((auto_mute - 50) / 5);
+                    }
                 }
+                update_mute_text();
             }
         });
     }
