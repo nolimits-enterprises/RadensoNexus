@@ -186,6 +186,9 @@ public class TheiaScanActivity extends AppCompatActivity {
             return;
         }
 
+
+
+
         mBluetoothAdapter = man.getAdapter();
         if (mBluetoothAdapter == null)
         {
@@ -193,6 +196,7 @@ public class TheiaScanActivity extends AppCompatActivity {
             finish();
             return;
         }
+
 
         if (this.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             AlertDialog.Builder b = new AlertDialog.Builder(this);
@@ -262,6 +266,7 @@ public class TheiaScanActivity extends AppCompatActivity {
         {
             startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 1);
         }
+
 
         // set click listener here
         mTheiaDevList.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -358,6 +363,7 @@ public class TheiaScanActivity extends AppCompatActivity {
 
         filters.add(new ScanFilter.Builder().setServiceUuid(new ParcelUuid(TheiaService.TheiaServiceUUID)).build());
         //mScanner.startScan(filters, scanSetting, mScanCB);
+
         mScanner.startScan(mScanCB);
         mScanning = true;
 
