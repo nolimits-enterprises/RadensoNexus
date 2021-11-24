@@ -19,9 +19,18 @@
 
 package com.noLimits.TheiaNexus;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -48,6 +57,50 @@ public class SplashActivity  extends AppCompatActivity {
                 finish();
             }
         };
+
+        if (this.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            AlertDialog.Builder b = new AlertDialog.Builder(this);
+            b.setMessage("Grant Fine Location Access Please");
+            b.setTitle("Location Access");
+            b.setPositiveButton(android.R.string.ok, null);
+            b.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                public void onDismiss(DialogInterface dialog) {
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                }
+            });
+            b.show();
+        }
+
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+            if (this.checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+                AlertDialog.Builder b = new AlertDialog.Builder(this);
+                b.setMessage("Grant Fine Location Access Please");
+                b.setTitle("Location Access");
+                b.setPositiveButton(android.R.string.ok, null);
+                b.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    public void onDismiss(DialogInterface dialog) {
+                        requestPermissions(new String[]{Manifest.permission.BLUETOOTH_SCAN}, 2);
+                    }
+                });
+                b.show();
+            }
+
+        BluetoothManager man = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+
+        if (man == null) {
+            finish();
+            return;
+        }
+
+
+        BluetoothAdapter bluetoothAdapter;
+        bluetoothAdapter = man.getAdapter();
+        if (bluetoothAdapter.isEnabled() == false)
+        {
+            startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 1);
+        }
 
         mHandler.postDelayed( r, 3000);
     }
