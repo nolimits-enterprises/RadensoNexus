@@ -32,20 +32,82 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 
 
 public class SplashActivity  extends AppCompatActivity {
 
+    private final int LOC_CODE = 1;
+    private final int SCAN_CODE = 2;
+    private final int ENABLE_CODE = 3;
+
+    Handler mHandler = new Handler();
+
+    protected void checkLocationPermission()
+    {
+        if (this.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            AlertDialog.Builder b = new AlertDialog.Builder(this);
+            b.setMessage("Grant Fine Location Access Please");
+            b.setTitle("Location Access");
+            b.setPositiveButton(android.R.string.ok, null);
+            b.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                public void onDismiss(DialogInterface dialog) {
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOC_CODE);
+                }
+            });
+            b.show();
+        }
+        else
+        {
+            checkScanPermission();
+        }
+    }
+
+    protected void checkScanPermission()
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (this.checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+                AlertDialog.Builder b = new AlertDialog.Builder(this);
+                b.setMessage("Grant Fine Location Access Please");
+                b.setTitle("Location Access");
+                b.setPositiveButton(android.R.string.ok, null);
+                b.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    public void onDismiss(DialogInterface dialog) {
+                        requestPermissions(new String[]{Manifest.permission.BLUETOOTH_SCAN}, SCAN_CODE);
+                    }
+                });
+                b.show();
+            } else {
+                checkBTEnable();
+            }
+        }
+        else
+        {
+            checkBTEnable();
+        }
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        this.getSupportActionBar().hide();
+        if (requestCode == ENABLE_CODE)
+        {
+            if (resultCode == RESULT_OK)
+                startSplashTimer();
+            else {
+                // TODO: say shit whack
+                finish();
+            }
+        }
+    }
 
-        Handler mHandler = new Handler();
+    private void startSplashTimer()
+    {
 
         Runnable r = new Runnable()
         {
@@ -58,35 +120,61 @@ public class SplashActivity  extends AppCompatActivity {
             }
         };
 
-        if (this.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            AlertDialog.Builder b = new AlertDialog.Builder(this);
-            b.setMessage("Grant Fine Location Access Please");
-            b.setTitle("Location Access");
-            b.setPositiveButton(android.R.string.ok, null);
-            b.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                public void onDismiss(DialogInterface dialog) {
-                    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        mHandler.postDelayed( r, 3000);
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String[] permissions,
+                                           int[] grantResults)
+    {
+
+        if (requestCode == LOC_CODE)
+        {
+            if (grantResults.length > 0)
+            {
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                {
+                    checkScanPermission();
                 }
-            });
-            b.show();
-        }
-
-
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
-            if (this.checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-                AlertDialog.Builder b = new AlertDialog.Builder(this);
-                b.setMessage("Grant Fine Location Access Please");
-                b.setTitle("Location Access");
-                b.setPositiveButton(android.R.string.ok, null);
-                b.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    public void onDismiss(DialogInterface dialog) {
-                        requestPermissions(new String[]{Manifest.permission.BLUETOOTH_SCAN}, 2);
-                    }
-                });
-                b.show();
+                else
+                {
+                    // TODO: Say permission not granted, and fail
+                    finish();
+                    return;
+                }
             }
+            else
+            {
+                finish();
+            }
+        }
+        else if (requestCode == SCAN_CODE)
+        {
+            if (grantResults.length > 0)
+            {
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                {
+                    checkBTEnable();
+                }
+                else
+                {
+                    // TODO: Say permission not granted, and fail
+                    finish();
+                    return;
+                }
+            }
+            else
+            {
+                finish();
+                return;
+            }
+        }
+    }
 
+    protected void checkBTEnable()
+    {
         BluetoothManager man = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
 
         if (man == null) {
@@ -99,10 +187,24 @@ public class SplashActivity  extends AppCompatActivity {
         bluetoothAdapter = man.getAdapter();
         if (bluetoothAdapter.isEnabled() == false)
         {
-            startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 1);
+            startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 3);
         }
+        else
+        {
+            startSplashTimer();
+        }
+    }
 
-        mHandler.postDelayed( r, 3000);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
+
+        this.getSupportActionBar().hide();
+
+        checkLocationPermission();
+
+
     }
 
 
