@@ -38,6 +38,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -52,6 +53,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -211,6 +213,26 @@ public class TheiaScanActivity extends AppCompatActivity {
             b.show();
         }
 
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+        if (this.checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+            AlertDialog.Builder b = new AlertDialog.Builder(this);
+            b.setMessage("Grant Fine Location Access Please");
+            b.setTitle("Location Access");
+            b.setPositiveButton(android.R.string.ok, null);
+            b.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                public void onDismiss(DialogInterface dialog) {
+                    requestPermissions(new String[]{Manifest.permission.BLUETOOTH_SCAN}, 2);
+                }
+            });
+            b.show();
+        }
+
+
+
+
+
         /*
         if (this.checkSelfPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             AlertDialog.Builder b = new AlertDialog.Builder(this);
@@ -242,6 +264,84 @@ public class TheiaScanActivity extends AppCompatActivity {
     String connectAddress;
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        int got = resultCode;
+        got++;
+
+        /*
+
+        // set click listener here
+        mTheiaDevList.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> p, View v, int pos, long id)
+            {
+                mConnectedText.setText("Connecting");
+                mConnectedText.setTextColor(Color.YELLOW);
+                Intent intent = new Intent(TheiaScanActivity.this, TheiaActionActivity.class);
+                if (mDeviceTypeList.get(pos) == DEVICE_TYPE.DS1_TYPE)
+                {
+                    selected_device = DEVICE_TYPE.DS1_TYPE;
+                    Semaphore bondSem = new Semaphore(0, true);
+                    if (mDeviceList.get(pos).getBondState() != BluetoothDevice.BOND_BONDED) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(TheiaScanActivity.this);
+                        builder.setMessage("Please make sure DS1 is in pairing mode")
+                                .setCancelable(false)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        try{
+                                            mDeviceList.get(pos).createBond();
+                                            connectAddress = mDeviceList.get(pos).getAddress();
+                                            mDS1Service.connectTo(mDeviceList.get(pos).getAddress());
+                                        }
+                                        catch (Exception e)
+                                        {
+
+                                        }
+                                    }
+                                });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                        try {
+                            //bondSem.acquire();
+                            //mDeviceList.get(pos).createBond();
+                        }
+                        catch (Exception e)
+                        {
+
+                        }
+                    }
+                    else {
+                        connectAddress = mDeviceList.get(pos).getAddress();
+                        mDS1Service.connectTo(mDeviceList.get(pos).getAddress());
+                    }
+                }else {
+                    selected_device = DEVICE_TYPE.THEIA_TYPE;
+                    connectAddress = mDeviceList.get(pos).getAddress();
+                    mTheiaService.connectTo(mDeviceList.get(pos).getAddress());
+                }
+                intent.putExtra("DEV_ADDR", mDeviceList.get(pos).getAddress());
+                stopScan();
+                //startActivity(intent);
+            }
+        });
+
+
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(TheiaService.THEIA_CONNECTED);
+        filter.addAction(TheiaService.THEIA_DISCONNECTED);
+        filter.addAction(DS1Service.DS1_CONNECTED);
+        filter.addAction(DS1Service.DS1_DISCONNECTED);
+        registerReceiver(mTheiaReceiver, filter);
+        // here scan
+        startScan();
+*/
+    }
+
+    @Override
     protected void onResume()
     {
         super.onResume();
@@ -266,6 +366,7 @@ public class TheiaScanActivity extends AppCompatActivity {
         {
             startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 1);
         }
+
 
 
         // set click listener here
@@ -335,12 +436,16 @@ public class TheiaScanActivity extends AppCompatActivity {
         // here scan
         startScan();
 
+
+
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(mTheiaReceiver);
+        if (mTheiaReceiver != null)
+            unregisterReceiver(mTheiaReceiver);
         onStop();
     }
 
