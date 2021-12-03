@@ -200,39 +200,6 @@ public class TheiaScanActivity extends AppCompatActivity {
         }
 
 
-        if (this.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            AlertDialog.Builder b = new AlertDialog.Builder(this);
-            b.setMessage("Grant Fine Location Access Please");
-            b.setTitle("Location Access");
-            b.setPositiveButton(android.R.string.ok, null);
-            b.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                public void onDismiss(DialogInterface dialog) {
-                    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-                }
-            });
-            b.show();
-        }
-
-
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
-        if (this.checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-            AlertDialog.Builder b = new AlertDialog.Builder(this);
-            b.setMessage("Grant Fine Location Access Please");
-            b.setTitle("Location Access");
-            b.setPositiveButton(android.R.string.ok, null);
-            b.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                public void onDismiss(DialogInterface dialog) {
-                    requestPermissions(new String[]{Manifest.permission.BLUETOOTH_SCAN}, 2);
-                }
-            });
-            b.show();
-        }
-
-
-
-
-
         /*
         if (this.checkSelfPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             AlertDialog.Builder b = new AlertDialog.Builder(this);

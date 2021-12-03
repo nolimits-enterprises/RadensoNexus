@@ -43,6 +43,7 @@ public class SplashActivity  extends AppCompatActivity {
     private final int LOC_CODE = 1;
     private final int SCAN_CODE = 2;
     private final int ENABLE_CODE = 3;
+    private final int CONNECT_CODE = 4;
 
     Handler mHandler = new Handler();
 
@@ -71,12 +72,36 @@ public class SplashActivity  extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             if (this.checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
                 AlertDialog.Builder b = new AlertDialog.Builder(this);
-                b.setMessage("Grant Fine Location Access Please");
-                b.setTitle("Location Access");
+                b.setMessage("Grant BT scan permission please");
+                b.setTitle("San Access");
                 b.setPositiveButton(android.R.string.ok, null);
                 b.setOnDismissListener(new DialogInterface.OnDismissListener() {
                     public void onDismiss(DialogInterface dialog) {
                         requestPermissions(new String[]{Manifest.permission.BLUETOOTH_SCAN}, SCAN_CODE);
+                    }
+                });
+                b.show();
+            } else {
+                checkConnectPermission();
+            }
+        }
+        else
+        {
+            checkBTEnable();
+        }
+    }
+
+    protected void checkConnectPermission()
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (this.checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                AlertDialog.Builder b = new AlertDialog.Builder(this);
+                b.setMessage("Grant BT connect permission please");
+                b.setTitle("Connect Access");
+                b.setPositiveButton(android.R.string.ok, null);
+                b.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    public void onDismiss(DialogInterface dialog) {
+                        requestPermissions(new String[]{Manifest.permission.BLUETOOTH_CONNECT}, CONNECT_CODE);
                     }
                 });
                 b.show();
@@ -151,6 +176,27 @@ public class SplashActivity  extends AppCompatActivity {
             }
         }
         else if (requestCode == SCAN_CODE)
+        {
+            if (grantResults.length > 0)
+            {
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                {
+                    checkConnectPermission();
+                }
+                else
+                {
+                    // TODO: Say permission not granted, and fail
+                    finish();
+                    return;
+                }
+            }
+            else
+            {
+                finish();
+                return;
+            }
+        }
+        else if (requestCode == CONNECT_CODE)
         {
             if (grantResults.length > 0)
             {

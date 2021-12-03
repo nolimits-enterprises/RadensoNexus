@@ -7,17 +7,19 @@
 
     <uses-permission
         android:name="android.permission.BLUETOOTH_SCAN"
-        android:usesPermissionFlags="neverForLocation"
-        android:required="true" />
+        android:usesPermissionFlags="neverForLocation" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+
     <uses-permission
         android:name="android.permission.BLUETOOTH"
-        android:required="true" />
+        android:maxSdkVersion="30" />
     <uses-permission
         android:name="android.permission.BLUETOOTH_ADMIN"
-        android:required="true" />
+        android:maxSdkVersion="30" />
     <uses-permission
-        android:name="android.permission.ACCESS_FINE_LOCATION"
-        android:required="true" />
+        android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 
     <uses-feature
@@ -277,7 +279,8 @@
         </activity>
 
         <activity android:name=".SplashActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
