@@ -35,6 +35,8 @@ public class DS1Brightness extends DS1ServiceActionACtivity {
     Button colorButton;
     SeekBar sb;
     Switch sw;
+    Button pos;
+    Button neg;
 
     @Override
     public void onCreate (Bundle b) {
@@ -46,6 +48,9 @@ public class DS1Brightness extends DS1ServiceActionACtivity {
         sb = (SeekBar)findViewById(R.id.seek_dsBright);
         sw = (Switch)findViewById(R.id.sw_ds1brightness);
 
+        pos = (Button)findViewById(R.id.btnBrightPos);
+        neg = (Button)findViewById(R.id.btnBrightNeg);
+
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
@@ -53,6 +58,8 @@ public class DS1Brightness extends DS1ServiceActionACtivity {
                 if (isChecked)
                 {
                     sb.setVisibility(View.GONE);
+                    pos.setVisibility(View.GONE);
+                    neg.setVisibility(View.GONE);
                     if (mDS1Service != null)
                     {
                         mDS1Service.setBrightness(mDS1Service.brightnessFromInt(0));
@@ -61,6 +68,8 @@ public class DS1Brightness extends DS1ServiceActionACtivity {
                 }
                 else {
                     sb.setVisibility(View.VISIBLE);
+                    pos.setVisibility(View.VISIBLE);
+                    neg.setVisibility(View.VISIBLE);
                     if (mDS1Service != null)
                     {
                         mDS1Service.setBrightness(mDS1Service.brightnessFromInt(3 - sb.getProgress()));
@@ -136,17 +145,25 @@ public class DS1Brightness extends DS1ServiceActionACtivity {
                     case BRIGHTNESS_DIMMER:
                         sw.setChecked(false);
                         sb.setProgress(0);
+                        pos.setVisibility(View.VISIBLE);
+                        neg.setVisibility(View.VISIBLE);
                         break;
                     case BRIGHTNESS_DIM:
                         sw.setChecked(false);
                         sb.setProgress(1);
+                        pos.setVisibility(View.VISIBLE);
+                        neg.setVisibility(View.VISIBLE);
                         break;
                     case BRIGHTNESS_BRIGHT:
                         sw.setChecked(false);
                         sb.setProgress(2);
+                        pos.setVisibility(View.VISIBLE);
+                        neg.setVisibility(View.VISIBLE);
                         break;
                     case BRIGHTNESS_AUTO:
                         sb.setVisibility(View.GONE);
+                        pos.setVisibility(View.GONE);
+                        neg.setVisibility(View.GONE);
                         sw.setChecked(true);
                         break;
                 }
