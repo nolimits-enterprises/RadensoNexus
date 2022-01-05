@@ -130,7 +130,15 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
 
         if (alertList.get(pos).alert_class == 0) {
             vh.progressStrength.setProgress((int) alertList.get(pos).intensity);
-            vh.textFreq.setText(String.valueOf(alertList.get(pos).frequency) + " GHz");
+            if (alertList.get(pos).frequency  < 1)
+            {
+                vh.textFreq.setText("");
+            }
+            else {
+                vh.textFreq.setText(String.valueOf(alertList.get(pos).frequency) + " GHz");
+            }
+
+
         } else {
             vh.progressStrength.setProgress(100);
             vh.textFreq.setText("");
@@ -205,6 +213,7 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
         {
             e.alert_class = 0;
             e.band = 4;
+            e.frequency = 0;
 
         }
         else if (0 == a.type.compareTo("MRCT"))
