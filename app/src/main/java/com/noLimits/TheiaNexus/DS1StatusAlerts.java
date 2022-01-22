@@ -223,6 +223,10 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
 
                                 }
 
+                                // don't play sound for muted alert
+                                if (alerts.get(0).muted)
+                                    return;
+
                                 FileDescriptor fd = afd.getFileDescriptor();
                                 MediaPlayer player = new MediaPlayer();
                                 try {
