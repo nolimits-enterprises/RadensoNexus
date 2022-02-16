@@ -98,7 +98,7 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
     {
         super.onPause();
         if (mDS1Service != null) {
-            mDS1Service.disableAlertNotifications();
+            //mDS1Service.disableAlertNotifications();
             mDS1Service.clearQueue();
         }
         if (mTimer != null)
@@ -227,16 +227,20 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
                                 if (alerts.get(0).muted)
                                     return;
 
+                                /*
                                 FileDescriptor fd = afd.getFileDescriptor();
                                 MediaPlayer player = new MediaPlayer();
+                                if (!player.isPlaying())
                                 try {
-                                    player.setDataSource(fd, afd.getStartOffset(),
-                                            afd.getLength());
-                                    player.setLooping(false);
-                                    player.prepare();
-                                    player.start();
+                                    //player.setDataSource(fd, afd.getStartOffset(),
+                                            //afd.getLength());
+                                    //player.setLooping(false);
+                                    //player.prepare();
+                                    //player.start();
                                 } catch (Exception e) {
                                 }
+
+                                 */
                             }
                         }
                     }

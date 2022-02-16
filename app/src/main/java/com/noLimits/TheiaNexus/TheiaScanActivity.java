@@ -183,6 +183,12 @@ public class TheiaScanActivity extends AppCompatActivity {
         sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
 
+        Intent intent = new Intent(this, DS1Service.class);
+
+        startService(intent);
+
+
+
         if (man == null) {
             Log.i(TAG, "failed to get bluetooth manager");
             return;
