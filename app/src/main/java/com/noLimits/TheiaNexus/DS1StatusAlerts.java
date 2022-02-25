@@ -15,8 +15,6 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
-
 package com.noLimits.TheiaNexus;
 
 import android.content.res.AssetFileDescriptor;
@@ -25,6 +23,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -45,6 +45,8 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
     private Timer mTimer;
 
     private Timer timer;
+
+    Switch bg;
 
     TimerTask clearTask;
 
@@ -69,24 +71,32 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
         mRecycler.setLayoutManager(new LinearLayoutManager(this));
         mRecycler.setAdapter(mAdapter);
 
+        bg = (Switch)findViewById(R.id.sw_BG_alerts);
 
+    }
 
-
-
+    public void onBGAlertSw()
+    {
 
     }
 
     @Override
     protected void onGotService()
     {
-        if (mDS1Service != null)
+        if (mDS1Service != null) {
             mDS1Service.enableAlertNotifications();
+            mDS1Service.setBackgroundAlert(true);
+        }
     }
 
     @Override
     public void onResume()
     {
         super.onResume();
+
+       if (mDS1Service != null)
+           mDS1Service.setBackgroundAlert(true);
+
 
         if (mDS1Service != null)
             mDS1Service.enableAlertNotifications();
@@ -96,6 +106,9 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
     @Override
     public void onPause()
     {
+
+        mDS1Service.setBackgroundAlert(bg.isChecked());
+
         super.onPause();
         if (mDS1Service != null) {
             //mDS1Service.disableAlertNotifications();
