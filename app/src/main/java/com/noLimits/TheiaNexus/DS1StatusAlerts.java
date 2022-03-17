@@ -17,6 +17,7 @@
  */
 package com.noLimits.TheiaNexus;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
@@ -73,7 +74,19 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
         mRecycler.setLayoutManager(new LinearLayoutManager(this));
         mRecycler.setAdapter(mAdapter);
 
+        sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+
+
         bg = (Switch)findViewById(R.id.sw_BG_alerts);
+
+        // attempt to connect if auto connect enabled and same device
+        if (sharedPref.contains(getString(R.string.key_alert_bg)))
+        {
+            if (sharedPref.getBoolean(getString(R.string.key_alert_bg), false) == true)
+            {
+               bg.setChecked(true);
+            }
+        }
 
     }
 
@@ -116,6 +129,10 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
             //mDS1Service.disableAlertNotifications();
             mDS1Service.clearQueue();
             mDS1Service.setBackgroundAlert(bg.isChecked());
+
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(getString(R.string.key_alert_bg), bg.isChecked());
+            editor.apply();
         }
         if (mTimer != null)
         {
