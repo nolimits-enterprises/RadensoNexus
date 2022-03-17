@@ -17,6 +17,7 @@
  */
 package com.noLimits.TheiaNexus;
 
+import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
     private AlertsAdapter mAdapter;
     private RecyclerView mRecycler;
     private Timer mTimer;
+    private SharedPreferences sharedPref;
 
     private Timer timer;
 
@@ -107,12 +109,13 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
     public void onPause()
     {
 
-        mDS1Service.setBackgroundAlert(bg.isChecked());
+
 
         super.onPause();
         if (mDS1Service != null) {
             //mDS1Service.disableAlertNotifications();
             mDS1Service.clearQueue();
+            mDS1Service.setBackgroundAlert(bg.isChecked());
         }
         if (mTimer != null)
         {
