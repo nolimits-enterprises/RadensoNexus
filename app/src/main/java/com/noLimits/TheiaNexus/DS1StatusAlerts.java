@@ -184,6 +184,8 @@ public class DS1StatusAlerts extends DS1ServiceActionACtivity {
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
+                                            if (mDS1Service == null)
+                                                return;
                                             Vector<DS1Service.RD_Alert> alerts = mDS1Service.getmAlerts();
                                             alerts.clear();
                                             if (alerts != null) {
