@@ -33,6 +33,7 @@ public class DS1cam extends DS1ServiceActionACtivity {
     Switch sw_rlc;
     Switch sw_speed;
     Switch sw_rlc_speed;
+    Switch sw_rlc_speed_chime;
 
     SeekBar sb_rlc;
 
@@ -64,6 +65,8 @@ public class DS1cam extends DS1ServiceActionACtivity {
             case R.id.sw_gps_rlc_speed:
                 mDS1Service.setGPSRLCSpeedEnable(checked);
                 break;
+            case R.id.sw_red_speed_chime:
+                mDS1Service.setRedSpeedChime(checked);
 
         }
     }
@@ -127,6 +130,7 @@ public class DS1cam extends DS1ServiceActionACtivity {
 
         sb_rlc = (SeekBar) findViewById(R.id.seek_gps_rlc);
         txt_rlc = (TextView) findViewById(R.id.txt_gps_rlc_speed);
+        sw_rlc_speed_chime = (Switch) findViewById(R.id.sw_red_speed_chime);
 
         sb_rlc.setMax(4);
 
@@ -201,6 +205,7 @@ public class DS1cam extends DS1ServiceActionACtivity {
                 sw_rlc.setChecked(mDS1Service.getmSetting().red_light_cam);
                 sw_speed.setChecked(mDS1Service.getmSetting().speed_cam);
                 sw_rlc_speed.setChecked(mDS1Service.getmSetting().red_light_and_speed_cam);
+                sw_rlc_speed_chime.setChecked(mDS1Service.getmSetting().redSpeedChime);
 
 
 
