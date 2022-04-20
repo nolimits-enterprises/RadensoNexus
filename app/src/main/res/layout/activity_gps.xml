@@ -170,4 +170,40 @@
         app:layout_constraintBottom_toTopOf="@+id/radioGroup6"
         app:layout_constraintEnd_toEndOf="@+id/radioGroup6"
         app:layout_constraintStart_toStartOf="@+id/radioGroup6" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup6">
+
+        <RadioButton
+            android:id="@+id/rad_advanced_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10 MHz" />
+
+        <RadioButton
+            android:id="@+id/rad_advanced_15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="15 MHz" />
+
+        <RadioButton
+            android:id="@+id/rad_advanced_20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="20 MHz" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Advanced Lockout"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup9"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroup9"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup9" />
 </androidx.constraintlayout.widget.ConstraintLayout>
