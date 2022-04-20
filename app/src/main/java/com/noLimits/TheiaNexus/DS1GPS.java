@@ -32,6 +32,7 @@ public class DS1GPS extends DS1ServiceActionACtivity {
     Switch sw_gps;
     Switch sw_sig;
     Switch sw_auto;
+    Switch sw_unlearn_lockout;
 
 
     RadioButton rb_auto_nl;
@@ -74,6 +75,9 @@ public class DS1GPS extends DS1ServiceActionACtivity {
                 break;
             case R.id.sw_gps_rlc_speed:
                 mDS1Service.setGPSRLCSpeedEnable(checked);
+                break;
+            case R.id.sw_gps_lockout_unlearn:
+                mDS1Service.setUnlearnAutoLockout(checked);
                 break;
 
         }
@@ -135,6 +139,7 @@ public class DS1GPS extends DS1ServiceActionACtivity {
         sw_gps = (Switch) findViewById(R.id.sw_GPS);
         sw_sig = (Switch) findViewById(R.id.swi_gps_sig);
         sw_auto = (Switch) findViewById(R.id.sw_gps_lockout);
+        sw_unlearn_lockout = (Switch) findViewById(R.id.sw_gps_lockout_unlearn);
 
         rb_auto_nl = (RadioButton) findViewById(R.id.radio_gps_auto_nl);
         rb_auto_50 = (RadioButton) findViewById(R.id.radio_gps_auto_50);
@@ -165,6 +170,7 @@ public class DS1GPS extends DS1ServiceActionACtivity {
                 sw_gps.setChecked(mDS1Service.getmSetting().gps);
                 sw_sig.setChecked(mDS1Service.getmSetting().gps_announce);
                 sw_auto.setChecked(mDS1Service.getmSetting().auto_lockout);
+                sw_unlearn_lockout.setChecked(mDS1Service.getmSetting().autoLearnLockout);
 
                 DS1Service.Alert_Distance dist = mDS1Service.getmSetting().alert_distance;
                 switch(dist)
