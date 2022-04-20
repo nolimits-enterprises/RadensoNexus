@@ -41,6 +41,11 @@ public class DS1GPS extends DS1ServiceActionACtivity {
     RadioButton rb_auto_150;
     RadioButton rb_auto_200;
 
+    RadioButton rb_adv_10;
+    RadioButton rb_adv_15;
+    RadioButton rb_adv_20;
+
+
     RadioButton rb_alert_auto;
     RadioButton rb_alert_short;
     RadioButton rb_alert_medium;
@@ -126,6 +131,18 @@ public class DS1GPS extends DS1ServiceActionACtivity {
                 mDS1Service.setLockoutBands(DS1Service.Lockout_Bands.LOCKOUT_BANDS_ALL);
                 break;
 
+            case R.id.rad_advanced_10:
+                mDS1Service.setAdvancedLockout(0);
+                break;
+
+            case R.id.rad_advanced_15:
+                mDS1Service.setAdvancedLockout(1);
+                break;
+
+            case R.id.rad_advanced_20:
+                mDS1Service.setAdvancedLockout(2);
+                break;
+
         }
     }
 
@@ -154,6 +171,10 @@ public class DS1GPS extends DS1ServiceActionACtivity {
 
         radio_ds1_gps_lockout_KX = (RadioButton) findViewById(R.id.radio_ds1_gps_lockout_KX);
         radio_ds1_gps_lockout_all = (RadioButton) findViewById(R.id.radio_ds1_gps_lockout_all);
+
+        rb_adv_10 = (RadioButton) findViewById(R.id.rad_advanced_10);
+        rb_adv_15 = (RadioButton) findViewById(R.id.rad_advanced_15);
+        rb_adv_20 = (RadioButton) findViewById(R.id.rad_advanced_20);
     }
 
 
@@ -187,6 +208,18 @@ public class DS1GPS extends DS1ServiceActionACtivity {
                     case ALERT_DISTANCE_SHORT:
                         rb_alert_short.setChecked(true);
                         break;
+                }
+
+                int advancedLock = mDS1Service.getmSetting().advancedLockout;
+                if (advancedLock == 0) {
+                    rb_adv_10.setChecked(true);
+                }
+                else if (advancedLock == 1) {
+                    rb_adv_15.setChecked(true);
+                }
+                else
+                {
+                    rb_adv_20.setChecked(true);
                 }
 
                 DS1Service.Lockout_Bands bands = mDS1Service.getmSetting().lockout_bands;
