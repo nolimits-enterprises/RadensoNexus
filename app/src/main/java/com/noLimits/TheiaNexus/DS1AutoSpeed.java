@@ -66,7 +66,7 @@ public class DS1AutoSpeed extends DS1ServiceActionACtivity {
                 {
                     if (mDS1Service != null)
                     {
-                        mDS1Service.setMRCDLowSpeedMute(progress * (metric ? 10 : 5));
+                        mDS1Service.setAutoSpeedSetting(progress * (metric ? 10 : 5) + (metric ? 20 : 15));
                         setMRCDText();
 
                     }
@@ -81,7 +81,7 @@ public class DS1AutoSpeed extends DS1ServiceActionACtivity {
     {
         sb.setProgress(sb.getProgress()+1);
         int progress = sb.getProgress();
-        mDS1Service.setMRCDLowSpeedMute(progress * (metric ? 10 : 5));
+        mDS1Service.setAutoSpeedSetting(progress * (metric ? 10 : 5) + (metric ? 20 : 15));
         setMRCDText();
     }
 
@@ -89,26 +89,28 @@ public class DS1AutoSpeed extends DS1ServiceActionACtivity {
     {
         sb.setProgress(sb.getProgress()-1);
         int progress = sb.getProgress();
-        mDS1Service.setMRCDLowSpeedMute(progress * (metric ? 10 : 5));
+        mDS1Service.setAutoSpeedSetting(progress * (metric ? 10 : 5) + (metric ? 20 : 15));
         setMRCDText();
     }
 
     void setMRCDText()
     {
+        /*
         if (sb.getProgress() == 0)
         {
             txt.setText("Off");
             return;
         }
+         */
 
         if (metric)
         {
-            int speed = sb.getProgress() *10;
+            int speed = sb.getProgress() *10 + 20;
             txt.setText(String.valueOf(speed) + " kph");
         }
         else
         {
-            int speed = sb.getProgress() * 5;
+            int speed = sb.getProgress() * 5 + 15;
             txt.setText(String.valueOf(speed) + " mph");
         }
     }
@@ -123,15 +125,19 @@ public class DS1AutoSpeed extends DS1ServiceActionACtivity {
                     return;
 
                 metric = mDS1Service.getmSetting().unit_standard;
-                int speed = mDS1Service.getmSetting().mrcd_low_speed_mute;
+                int speed = mDS1Service.getmSetting().autoSpeed;
                 if (speed > 0) {
                     if (metric) {
+                        speed -= 20;
                         speed /= 10;
-                        sb.setMax(10);
+                        sb.setMax(7);
+
                     }
                     else {
+                        speed -= 15;
                         speed /= 5;
-                        sb.setMax(13);
+                        sb.setMax(9);
+
                     }
                 }
 
