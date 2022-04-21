@@ -43,6 +43,13 @@
             android:onClick="onRadioButtonClicked"
             android:text="Dark" />
 
+        <RadioButton
+            android:id="@+id/radio_idle_speed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Speed" />
+
 
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,6 +31,7 @@ public class DS1Idle extends DS1ServiceActionACtivity {
     RadioButton rb_time;
     RadioButton rb_smart;
     RadioButton rb_dark;
+    RadioButton rb_speed;
 
 
 
@@ -46,6 +47,7 @@ public class DS1Idle extends DS1ServiceActionACtivity {
         rb_time = (RadioButton)findViewById(R.id.radio_idle_time);
         rb_smart = (RadioButton)findViewById(R.id.radio_idle_smart);
         rb_dark = (RadioButton)findViewById(R.id.radio_idle_dark);
+        rb_speed = (RadioButton)findViewById(R.id.radio_idle_speed);
 
     }
 
@@ -68,6 +70,8 @@ public class DS1Idle extends DS1ServiceActionACtivity {
             case R.id.radio_idle_dark:
                 mDS1Service.setIdle(DS1Service.Idle_Mode.IDLE_DARK);
                 break;
+            case R.id.radio_idle_speed:
+                mDS1Service.setIdle(DS1Service.Idle_Mode.IDLE_SPEED);
         }
     }
 
@@ -110,6 +114,8 @@ public class DS1Idle extends DS1ServiceActionACtivity {
                         rb_smart.setChecked(false);
                         rb_time.setChecked(false);
                         break;
+                    case IDLE_SPEED:
+                        rb_speed.setChecked(true);
                 }
 
             }
