@@ -41,6 +41,9 @@ public class DS1MenuUserPref extends DS1Menu{
         arrayMenu.add("    Over Speed Warning");                   // 2
         intentMenu.add(new DS1Menu.activityConfiguration(DS1OverSpeedWarning.class));
 
+        arrayMenu.add("    Auto Speed Setting");                   // 2
+        intentMenu.add(new DS1Menu.activityConfiguration(DS1AutoSpeed.class));
+
 
     }
 }

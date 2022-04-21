@@ -92,6 +92,10 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity android:name=".DS1AutoSpeed"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity android:name=".DS1ToneLaser"
             android:screenOrientation="portrait">
         </activity>
