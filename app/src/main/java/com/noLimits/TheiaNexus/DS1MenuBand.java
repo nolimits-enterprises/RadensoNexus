@@ -34,8 +34,12 @@ public class DS1MenuBand extends DS1Menu{
         intentMenu.add(new DS1Menu.activityConfiguration(DS1Channels.class));
         arrayMenu.add("    Filters");                   // 2
         intentMenu.add(new DS1Menu.activityConfiguration(DS1Filter.class));
+
+        /*
         arrayMenu.add("    K Notch Display");                   // 2
         intentMenu.add(new DS1Menu.activityConfiguration(DS1KNotch.class));
+
+         */
 
     }
 }
