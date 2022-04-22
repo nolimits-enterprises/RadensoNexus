@@ -56,7 +56,7 @@ public class DS1BogeyTone extends DS1ServiceActionACtivity {
                     afd = getResources().openRawResourceFd(R.raw.bogey4);
                     break;
                 case R.id.radio_tone_5:
-                    setTone(5);
+                    setTone(256);
                     return;
                     //afd = getResources().openRawResourceFd(R.raw.bogey5);
                     //break;
@@ -141,7 +141,7 @@ public class DS1BogeyTone extends DS1ServiceActionACtivity {
             case 3:
                 rb_4.setChecked(true);
                 break;
-            case 4:
+            default:
                 rb_5.setChecked(true);
                 break;
         }
