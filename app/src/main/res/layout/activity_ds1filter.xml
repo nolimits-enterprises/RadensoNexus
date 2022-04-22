@@ -268,6 +268,7 @@
             android:id="@+id/rad_ds1_knotch_block_mute"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="Mute All" />
     </RadioGroup>
 

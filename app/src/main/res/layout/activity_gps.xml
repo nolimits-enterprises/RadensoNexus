@@ -183,18 +183,21 @@
             android:id="@+id/rad_advanced_10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="10 MHz" />
 
         <RadioButton
             android:id="@+id/rad_advanced_15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="15 MHz" />
 
         <RadioButton
             android:id="@+id/rad_advanced_20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="20 MHz" />
     </RadioGroup>
 

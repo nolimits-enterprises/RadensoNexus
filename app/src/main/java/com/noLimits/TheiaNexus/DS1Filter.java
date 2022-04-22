@@ -182,7 +182,7 @@ public class DS1Filter extends DS1ServiceActionACtivity {
                 mDS1Service.setKNotch(DS1Service.K_Notch.K_NOTCH_BLOCK_WEAK);
                 break;
             case R.id.rad_ds1_knotch_block_mute:
-                //mDS1Service.setKNotch(DS1Service.K_Notch.
+                mDS1Service.setKNotch(DS1Service.K_Notch.K_NOTCH_MUTE_ALL);
                 break;
 
 
