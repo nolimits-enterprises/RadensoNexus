@@ -45,6 +45,7 @@ public class DS1Filter extends DS1ServiceActionACtivity {
     RadioButton rad_ds1_knotch_off;
     RadioButton rad_ds1_knotch_weak;
     RadioButton rad_ds1_knotch_all;
+    RadioButton rad_ds1_knotch_mute;
 
     Switch sw_1;
     Switch sw_2;
@@ -77,6 +78,7 @@ public class DS1Filter extends DS1ServiceActionACtivity {
         rad_ds1_knotch_off = (RadioButton)findViewById(R.id.rad_ds1_knotch_off);
         rad_ds1_knotch_weak = (RadioButton)findViewById(R.id.rad_ds1_knotch_weak);
         rad_ds1_knotch_all =  (RadioButton)findViewById(R.id.rad_ds1_knotch_all);
+        rad_ds1_knotch_mute = (RadioButton)findViewById(R.id.rad_ds1_knotch_block_mute);
 
         sw_TSR = (Switch)findViewById(R.id.sw_TSR);
         sw_k = (Switch)findViewById(R.id.sw_K_filter);
@@ -178,6 +180,9 @@ public class DS1Filter extends DS1ServiceActionACtivity {
                 break;
             case R.id.rad_ds1_knotch_weak:
                 mDS1Service.setKNotch(DS1Service.K_Notch.K_NOTCH_BLOCK_WEAK);
+                break;
+            case R.id.rad_ds1_knotch_block_mute:
+                //mDS1Service.setKNotch(DS1Service.K_Notch.
                 break;
 
 
@@ -289,6 +294,9 @@ public class DS1Filter extends DS1ServiceActionACtivity {
                         break;
                     case K_NOTCH_BLOCK_WEAK:
                         rad_ds1_knotch_weak.setChecked(true);
+                        break;
+                    case K_NOTCH_MUTE_ALL:
+                        rad_ds1_knotch_mute.setChecked(true);
                         break;
                     default:
                         rad_ds1_knotch_off.setChecked(true);
