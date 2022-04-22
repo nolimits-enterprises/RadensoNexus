@@ -255,7 +255,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
-            android:text="Block Weak" />
+            android:text="Mute Weak" />
 
         <RadioButton
             android:id="@+id/rad_ds1_knotch_all"
@@ -263,6 +263,12 @@
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
             android:text="Block All" />
+
+        <RadioButton
+            android:id="@+id/rad_ds1_knotch_block_mute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mute All" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
