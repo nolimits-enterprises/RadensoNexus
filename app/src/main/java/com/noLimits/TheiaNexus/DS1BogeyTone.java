@@ -57,8 +57,9 @@ public class DS1BogeyTone extends DS1ServiceActionACtivity {
                     break;
                 case R.id.radio_tone_5:
                     setTone(5);
-                    afd = getResources().openRawResourceFd(R.raw.bogey5);
-                    break;
+                    return;
+                    //afd = getResources().openRawResourceFd(R.raw.bogey5);
+                    //break;
 
             }
 
@@ -94,6 +95,8 @@ public class DS1BogeyTone extends DS1ServiceActionACtivity {
         rb_8 = (RadioButton)findViewById(R.id.radio_tone_8);
         rb_9 = (RadioButton)findViewById(R.id.radio_tone_9);
         rb_10 = (RadioButton)findViewById(R.id.radio_tone_10);
+
+        rb_5.setText("Off");
 
 
         rb_6.setVisibility(View.INVISIBLE);
