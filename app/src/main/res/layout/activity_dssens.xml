@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/prog_sense_ka" />
 
     <Button
-        android:id="@+id/btnBrightNeg7"
+        android:id="@+id/btnKPos"
         android:layout_width="40dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -130,7 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:max="5"
+        android:max="7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sw_ds1K"
         app:layout_constraintTop_toTopOf="@+id/sw_ds1K" />

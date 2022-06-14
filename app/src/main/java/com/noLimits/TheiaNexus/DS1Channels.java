@@ -149,8 +149,11 @@ public class DS1Channels extends DS1ServiceActionACtivity {
                             text_X.setText(String.valueOf(progress * 10 + 50) + "%");
                             break;
                         case R.id.prog_sense_K:
-                            mDS1Service.setKSensitivity(progress);
-                            text_K.setText(String.valueOf(progress * 10 + 50) + "%");
+                            if (progress > 1)
+                                mDS1Service.setKSensitivity(progress - 2);
+                            else
+                                mDS1Service.setKSensitivity(progress + 6);
+                            text_K.setText(String.valueOf(progress * 10 + 30) + "%");
                             break;
                         case R.id.prog_sense_ka:
                             mDS1Service.setKaSensitivity(progress);
@@ -193,14 +196,21 @@ public class DS1Channels extends DS1ServiceActionACtivity {
             case R.id.btnKNeg:
                 sb_K.setProgress(sb_K.getProgress() - 1);
                 progress = sb_K.getProgress();
-                mDS1Service.setKSensitivity(progress);
-                text_K.setText(String.valueOf(progress * 10 + 50) + "%");
+                if (progress > 1)
+
+                    mDS1Service.setKSensitivity(progress - 2);
+                else
+                    mDS1Service.setKSensitivity(progress + 6);
+                text_K.setText(String.valueOf(progress * 10 + 30) + "%");
                 break;
-            case R.id.btnKPlus:
+            case R.id.btnKPos:
                 sb_K.setProgress(sb_K.getProgress() + 1);
                 progress = sb_K.getProgress();
-                mDS1Service.setKSensitivity(progress);
-                text_K.setText(String.valueOf(progress * 10 + 50) + "%");
+                if (progress > 1)
+                    mDS1Service.setKSensitivity(progress - 2);
+                else
+                    mDS1Service.setKSensitivity(progress + 6);
+                text_K.setText(String.valueOf(progress * 10 + 30) + "%");
                 break;
             case R.id.btnXNeg:
                 sb_X.setProgress(sb_X.getProgress() - 1);
@@ -238,8 +248,11 @@ public class DS1Channels extends DS1ServiceActionACtivity {
                 int x = mDS1Service.getmSetting().custom_X;
                 sb_X.setProgress(x);
                 text_X.setText(String.valueOf(sb_X.getProgress() * 10 + 50) + "%");
-                sb_K.setProgress(mDS1Service.getmSetting().custom_K);
-                text_K.setText(String.valueOf(sb_K.getProgress() * 10 + 50) + "%");
+                if (mDS1Service.getmSetting().custom_K <= 5)
+                     sb_K.setProgress(mDS1Service.getmSetting().custom_K + 2);
+                else
+                     sb_K.setProgress(mDS1Service.getmSetting().custom_K - 6);
+                text_K.setText(String.valueOf(sb_K.getProgress() * 10 + 30) + "%");
                 sb_Ka.setProgress(mDS1Service.getmSetting().custom_Ka);
                 text_Ka.setText(String.valueOf(sb_Ka.getProgress() * 10 + 50) + "%");
                 sw_gatso.setChecked(mDS1Service.getmSetting().gatso);
