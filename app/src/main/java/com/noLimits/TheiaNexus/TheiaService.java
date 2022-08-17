@@ -326,6 +326,8 @@ public class TheiaService extends Service {
          if (mBluetoothGatt == null)
              return;
 
+         Log.d("THEIA_service","disconnected");
+
          rxtxQ.clear();
 
          mBluetoothGatt.disconnect();
