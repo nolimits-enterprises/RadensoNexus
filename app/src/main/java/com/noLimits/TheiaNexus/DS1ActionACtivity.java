@@ -21,8 +21,10 @@
 package com.noLimits.TheiaNexus;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -50,6 +52,64 @@ import java.util.TreeSet;
 
 public class DS1ActionACtivity extends DS1Menu {
 
+    @Override
+    protected void onGotService() {
+
+        if (mDS1Service == null)
+            return;
+
+        if (mDS1Service.lastUpdateFailed)
+        {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("It looks like the last update failed.  We highly recommend you do a RECOVERY update.  Go ahead to update page?").setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener);
+
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+
+    }
+
+    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which){
+                case DialogInterface.BUTTON_POSITIVE:
+                    mDS1Service.lastUpdateFailed = false;
+
+                    Intent intent = new Intent(DS1ActionACtivity.this, DS1UpdateTest.class);
+                    intent.putExtra("RECOVERY", "true");
+                    startActivity(intent);
+                    break;
+
+                case DialogInterface.BUTTON_NEGATIVE:
+                    mDS1Service.lastUpdateFailed = false;
+                    //No button clicked
+                    break;
+            }
+        }
+    };
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        if (mDS1Service != null)
+        {
+            if (mDS1Service.lastUpdateFailed)
+            {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("It looks like the last update failed.  We highly recommend you do a RECOVERY update.  Go ahead to update page?").setPositiveButton("Yes", dialogClickListener)
+                        .setNegativeButton("No", dialogClickListener);
+
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        }
+    }
     @Override
     protected void addMenuItems()
     {

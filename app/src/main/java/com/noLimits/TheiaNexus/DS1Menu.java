@@ -56,6 +56,9 @@ public class DS1Menu extends DS1ServiceActionACtivity {
     ArrayList intentMenu = new ArrayList<TheiaMenu.activityConfiguration>();
     ArrayList headerList = new ArrayList<Integer>();
 
+    @Override
+    protected void onGotService() {}
+
 
     private final BroadcastReceiver mTheiaReceiver = new BroadcastReceiver()
     {

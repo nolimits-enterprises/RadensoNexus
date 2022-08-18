@@ -61,6 +61,8 @@ public class DS1UpdateTest extends DS1ServiceActionACtivity {
 
         setTitle("System Update");
 
+
+
         setContentView(R.layout.activity_ds1update);
         currentVersion = (TextView)findViewById(R.id.textCurrentVersion);
         updateVersion  = (TextView)findViewById(R.id.textNewestVersion);
@@ -71,7 +73,13 @@ public class DS1UpdateTest extends DS1ServiceActionACtivity {
         recoverCheck = (CheckBox)findViewById(R.id.checkRecover);
         updateTimeRemaining = (TextView)findViewById(R.id.txtTimeRemaining);
 
-        recoverCheck.setChecked(false);
+        if (getIntent().hasExtra("RECOVERY"))
+        {
+            // force RECOVERY check
+            recoverCheck.setChecked(true);
+        }
+        else
+            recoverCheck.setChecked(false);
 
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
