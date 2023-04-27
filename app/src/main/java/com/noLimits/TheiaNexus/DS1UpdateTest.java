@@ -99,7 +99,7 @@ public class DS1UpdateTest extends DS1ServiceActionACtivity {
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Warning: Update could take significantly longer.  Unless you are sure, we recommend you do this only if advised by Radenso support.  Are you sure?").setPositiveButton("Yes", dialogClickListener)
+        builder.setMessage("Warning: Update could take significantly l        onger.  Unless you are sure, we recommend you do this only if advised by Radenso support.  Are you sure?").setPositiveButton("Yes", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener);
 
 
