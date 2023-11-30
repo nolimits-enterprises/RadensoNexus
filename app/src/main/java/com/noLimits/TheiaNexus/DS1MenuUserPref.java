@@ -38,6 +38,8 @@ public class DS1MenuUserPref extends DS1Menu{
         intentMenu.add(new DS1Menu.activityConfiguration(DS1_LowSpeedMute.class));
         arrayMenu.add("    MRCD Low Speed Mute");                   // 2
         intentMenu.add(new DS1Menu.activityConfiguration(DS1MRCDMute.class));
+        arrayMenu.add("    MRCD Low Speed Mute");                   // 2
+        intentMenu.add(new DS1Menu.activityConfiguration(DS1KaMute.class));
         arrayMenu.add("    Over Speed Warning");                   // 2
         intentMenu.add(new DS1Menu.activityConfiguration(DS1OverSpeedWarning.class));
 

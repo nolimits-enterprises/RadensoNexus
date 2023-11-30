@@ -201,6 +201,9 @@
         <activity android:name=".DS1MRCDMute"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".DS1KaMute"
+            android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".DS1BogeyTone"
             android:screenOrientation="portrait">
         </activity>
