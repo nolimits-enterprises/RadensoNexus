@@ -39,6 +39,9 @@ public class DS1AutoMute extends DS1ServiceActionACtivity {
     RadioButton rb_40p;
     RadioButton rb_50p;
 
+    RadioButton rb_auto_xk;
+    RadioButton rb_auto_allband;
+
     Switch sw;
 
 
@@ -61,6 +64,10 @@ public class DS1AutoMute extends DS1ServiceActionACtivity {
         rb_30p = (RadioButton)findViewById(R.id.radio_mute_30);
         rb_40p = (RadioButton)findViewById(R.id.radio_mute_40);
         rb_50p = (RadioButton)findViewById(R.id.radio_mute_50);
+
+        rb_auto_xk = (RadioButton)findViewById(R.id.rad_auto_xk);
+        rb_auto_allband = (RadioButton)findViewById(R.id.rad_auto_allband);
+
 
         sw = (Switch)findViewById(R.id.sw_automute);
 
@@ -108,6 +115,14 @@ public class DS1AutoMute extends DS1ServiceActionACtivity {
             case R.id.radio_mute_50:
                 mDS1Service.setAutoMuteVol(50);
                 break;
+
+            case R.id.rad_auto_allband:
+                mDS1Service.setAutoBandAll(true);
+                break;
+
+            case R.id.rad_auto_xk:
+                mDS1Service.setAutoBandAll(false);
+                break;
         }
     }
 
@@ -154,6 +169,11 @@ public class DS1AutoMute extends DS1ServiceActionACtivity {
                          rb_50p.setChecked(true);
                          break;
                  }
+
+                 if (mDS1Service.getmSetting().autoAllBand == true)
+                     rb_auto_allband.setChecked(true);
+                 else
+                     rb_auto_xk.setChecked(true);
 
             }
         });
