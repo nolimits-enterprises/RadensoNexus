@@ -170,10 +170,12 @@ public class DS1AutoMute extends DS1ServiceActionACtivity {
                          break;
                  }
 
-                 if (mDS1Service.getmSetting().autoAllBand == true)
+                 if (mDS1Service.getmSetting().autoAllBand == true) {
                      rb_auto_allband.setChecked(true);
-                 else
+                 }
+                 else {
                      rb_auto_xk.setChecked(true);
+                 }
 
             }
         });
