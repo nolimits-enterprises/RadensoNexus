@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.widget.RadioButton;
@@ -115,7 +116,17 @@ public class DS1ServiceActionACtivity extends AppCompatActivity{
         IntentFilter filter = new IntentFilter();
         filter.addAction(DS1Service.DS1_GOT_RESULT);
         filter.addAction(DS1Service.DS1_DISCONNECTED);
-        registerReceiver(mDS1Receiver, filter);
+
+        if ((Build.VERSION.SDK_INT >= 34) && (getApplicationInfo().targetSdkVersion >= 34)) {
+            registerReceiver(mDS1Receiver, filter, Context.RECEIVER_EXPORTED);
+            //registerReceiver(mTheiaReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        }
+        else
+        {
+            registerReceiver(mDS1Receiver, filter);
+        }
+
+        //registerReceiver(mDS1Receiver, filter);
     }
 
     @Override

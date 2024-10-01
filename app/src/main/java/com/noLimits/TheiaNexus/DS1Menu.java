@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -277,7 +278,17 @@ public class DS1Menu extends DS1ServiceActionACtivity {
         IntentFilter filter = new IntentFilter();
         filter.addAction(DS1Service.DS1_CONNECTED);
         filter.addAction(DS1Service.DS1_DISCONNECTED);
-        registerReceiver(mTheiaReceiver, filter);
+
+        if ((Build.VERSION.SDK_INT >= 34) && (getApplicationInfo().targetSdkVersion >= 34)) {
+            registerReceiver(mTheiaReceiver, filter, Context.RECEIVER_EXPORTED);
+            //registerReceiver(mTheiaReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        }
+        else
+        {
+            registerReceiver(mTheiaReceiver, filter);
+        }
+
+        //registerReceiver(mTheiaReceiver, filter);
     }
 
     @Override

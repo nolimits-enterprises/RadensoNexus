@@ -406,8 +406,9 @@ public class TheiaScanActivity extends AppCompatActivity {
         filter.addAction(TheiaService.THEIA_DISCONNECTED);
         filter.addAction(DS1Service.DS1_CONNECTED);
         filter.addAction(DS1Service.DS1_DISCONNECTED);
-        if (Build.VERSION.SDK_INT >= 34 && getApplicationInfo().targetSdkVersion >= 34) {
-            registerReceiver(mTheiaReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        if ((Build.VERSION.SDK_INT >= 34) && (getApplicationInfo().targetSdkVersion >= 34)) {
+            registerReceiver(mTheiaReceiver, filter, Context.RECEIVER_EXPORTED);
+            //registerReceiver(mTheiaReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
         }
         else
         {
