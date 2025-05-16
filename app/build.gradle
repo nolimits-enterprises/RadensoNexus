@@ -10,8 +10,8 @@ android {
         applicationId "com.noLimits.TheiaNexus"
         minSdkVersion 23
         targetSdkVersion 34
-        versionCode 54
-        versionName '1.53'
+        versionCode 55
+        versionName '1.54'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
