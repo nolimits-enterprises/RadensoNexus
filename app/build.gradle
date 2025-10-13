@@ -9,9 +9,9 @@ android {
     defaultConfig {
         applicationId "com.noLimits.TheiaNexus"
         minSdkVersion 23
-        targetSdkVersion 34
-        versionCode 59
-        versionName '1.58'
+        targetSdkVersion 35
+        versionCode 60
+        versionName '1.59'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
